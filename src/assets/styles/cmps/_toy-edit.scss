@@ -1,0 +1,84 @@
+.toy-edit {
+    >h2 {
+        font-size: 35px;
+    }
+}
+
+.edit-container {
+    width: 43%;
+    min-width: 350px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $clr3;
+    border-radius: 15px;
+    padding: 0 20px;
+    position: relative;
+
+
+    .toy_createdAt {
+        position: absolute;
+        top: 0;
+        right: 40%;
+        font-size: 10px;
+    }
+
+    .basic-details-container {
+        flex-basis: 50%;
+        height: 100%;
+        align-self: flex-start;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        input {
+            width: 92%;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+
+        h3 {
+            display: flex;
+            justify-content: flex-start;
+        }
+    }
+
+    .stock-labels-container {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .labels {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+    }
+
+    .save-btn {
+        width: 50%;
+        flex-grow: 1;
+        margin: 15px 30%;
+    }
+}
+
+// edit + details
+.back-btn {
+    color: $clr4;
+    background-color: $clr3;
+    position: absolute;
+    left: 20px;
+    margin-top: -27px;
+
+    &:hover {
+        font-weight: 600;
+    }
+
+}

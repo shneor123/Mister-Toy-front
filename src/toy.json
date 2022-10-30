@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Disney Toy Story Buzz Plush",
+        "price": 150,
+        "labels": [
+            "Baby",
+            "Doll"
+        ],
+        "createdAt": 1542107359454,
+        "inStock": true,
+        "src": "https://img.fruugo.com/product/5/57/223026575_max.jpg"
+    },
+    {
+        "name": "Thomas & Friends",
+        "price": 180,
+        "labels": [
+            "Baby",
+            "Doll"
+        ],
+        "createdAt": 1542107359454,
+        "inStock": true,
+        "src": "https://cdn.shopify.com/s/files/1/0521/3352/7718/products/517tihnbwNL_1024x1024.jpg?v=1633062811"
+    },
+    {
+        "name": "Lego Gear Bots",
+        "price": 80,
+        "labels": [
+            "Box game"
+        ],
+        "createdAt": 1542107359454,
+        "inStock": true,
+        "src": "https://g.christianbook.com/g/slideshow/6/60345x/main/60345x_10_adv.jpg"
+    },
+    {
+        "name": "Spectrum Flip Kite",
+        "price": 50,
+        "labels": [
+            "Outdoor"
+        ],
+        "createdAt": 1652076934504,
+        "inStock": true,
+        "src": "https://cdn.shopify.com/s/files/1/0595/2906/8726/products/prism-kites-flip-p1-product-spectrum_1024x1024.jpg?v=1631804110"
+    },
+    {
+        "name": "Jungle Escape Puzzle",
+        "price": 175,
+        "labels": [
+            "Puzzle",
+            "Box game"
+        ],
+        "createdAt": 1652201769123,
+        "inStock": true,
+        "src": "https://d1jqecz1iy566e.cloudfront.net/large/rb294.jpg"
+    },
+    {
+        "name": "Coming soon...",
+        "price": 200,
+        "labels": [
+            "Art"
+        ],
+        "createdAt": 1652201769133,
+        "inStock": true,
+        "src": ""
+    }
+]

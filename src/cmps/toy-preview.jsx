@@ -8,10 +8,8 @@ import imgDef from '../assets/img/default.jpg'
 import { Link } from 'react-router-dom'
 import { userService } from '../services/user.service'
 import { Draggable } from 'react-beautiful-dnd'
-import { utilService } from '../services/util.service'
 
 export const ToyPreview = ({ toy, onRemoveToy, index }) => {
-
     const [isOpenModal, setIsOpenModal] = useState(false)
 
     const onToggleModal = () => {
@@ -50,16 +48,13 @@ export const ToyPreview = ({ toy, onRemoveToy, index }) => {
                                     </Link>
                                 </>
                             }
-                            <div className="img-noAdmin" onClick={onToggleModal}>
-                                {(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
-                                    <button><img src={details} /></button></Link>
-                                }
-                            </div>
+                            <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
+                                <button><img src={details} /></button></Link>}</div>
                         </div>
+                        {provided.placeholder}
 
                     </article >
                 </Link>
-                // {provided.placeholder}
             )}
         </Draggable>
     )

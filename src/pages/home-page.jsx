@@ -18,6 +18,7 @@ export const HomePage = () => {
                     </div>
                 </section>
             </section>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNezyQWlMgEQOcWrVd2yU_150BsimDK0H9_I99OSbnhJ_3HxImWmoqg_TosS2K6BULHU4&usqp=CAU" />
         </section>
     );
 };

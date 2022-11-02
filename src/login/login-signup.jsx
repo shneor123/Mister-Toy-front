@@ -59,6 +59,7 @@ export const LoginSignup = () => {
   const onUploaded = (imgUrl) => {
     setCredentials({ ...credentials, imgUrl });
   }
+
   return (
     <section className="login-page flex column">
       <header className="login-header">

@@ -43,13 +43,13 @@ export class Dashboard extends React.Component {
                     label: '# of Votes',
                     data: labelsStockMap,
                     backgroundColor: [
-                        'rgb(1, 147, 108)',
-                        'rgb(12, 180, 121)',
-                        'rgb(41, 209, 157)',
-                        'rgb(75, 234, 170)',
-                        'rgb(112, 245, 202)',
-                        'rgb(146, 243, 208)',
-                        'rgb(184, 251, 233)'
+                        'rgba(255, 20, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 45, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 69, 64, 1)',
+                        'rgba(255, 120, 120, 1)'
                     ],
                     borderColor: [
                         'rgb(40, 44, 52)'
@@ -66,13 +66,13 @@ export class Dashboard extends React.Component {
                     label: '# of Votes',
                     data: labelsPriceMap,
                     backgroundColor: [
-                        'rgb(47, 143, 157)',
-                        'rgb(27, 154, 170)',
-                        'rgb(59, 172, 182)',
-                        'rgb(90, 190, 194)',
-                        'rgb(153, 225, 217)',
-                        'rgb(179, 232, 220)',
-                        'rgb(204, 238, 222)'
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 120, 120, 1)',
                     ],
                     borderColor: [
                         'rgb(40, 44, 52)'

@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { showSuccessMsg } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
 import { loadReviews, removeReview } from '../store/actions/review.action'
 
 export const ReviewsInfo = (props) => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
     const dispatch = useDispatch()
+
+    const [state, setState] = useState({
+        createdAt: Date.now(),
+    })
 
     useEffect(() => {
         dispatch(loadReviews(null))
@@ -21,6 +27,12 @@ export const ReviewsInfo = (props) => {
     console.log(reviews)
     if (!reviews) return <></>
     if (reviews.length === 0) return <h3> Waiting for the first reviews!</h3>
+
+    const onRemoveReview = (reviewId) => {
+        showSuccessMsg('Review removed')
+        dispatch(removeReview(reviewId))
+    }
+    const { createdAt } = state
     return (
         <section className="reviews-container">
             <div className="review-inf">reviews: {reviews.length}</div>
@@ -35,18 +47,21 @@ export const ReviewsInfo = (props) => {
                         </div>
                         <div>
                             <strong>Posted by:{" "}</strong>
-                            {review.byUser.username}
+                            <Link to={'/users'}>
+                                {review.byUser.username}
+                            </Link>
                         </div>
-
                         <p className="content">
                             <strong>Content:{" "}</strong>
                             {review.content}
                         </p>
-
-                        {/* <p>Member Since: {utilService.dateToString(review.createdAt)}</p> */}
+                        <p className='since-review'>
+                            <strong>since:{" "}</strong>
+                            {utilService.dateToString(createdAt)}
+                        </p>
                         {(!props.loggedInUser?.isAdmin || props.loggedInUser?._id === review.byUser._id)
                             && <button className='delete-btn'
-                                onClick={() => dispatch(removeReview(review._id))}>
+                                onClick={() => onRemoveReview(review._id)}>
                                 &times;
                             </button>
                         }

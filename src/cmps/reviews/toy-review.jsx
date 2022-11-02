@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
     if (!reviews) return <></>
     if (reviews.length === 0) return <h3>Weite first review!</h3>
@@ -9,7 +10,6 @@ export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
             '-no rate specified-' : String.fromCharCode(9733).repeat(count)
         return str
     }
-
     return (
         <div className="toy-reviews">
             {reviews.map(review =>

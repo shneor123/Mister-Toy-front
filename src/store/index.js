@@ -11,6 +11,8 @@ const rootReducer = combineReducers({
     toyModule: toyReducer,
     userModule: userReducer,
     reviewModule: reviewReducer,
+
+
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

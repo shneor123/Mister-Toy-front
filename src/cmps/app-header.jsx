@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { LogOut } from '../login/logout'
 import { onLogout } from '../store/actions/user.actions'
+import { BodyColor } from './body-color'
 
 export const AppHeader = () => {
     const { toys } = useSelector((storeState) => storeState.toyModule)
@@ -21,12 +22,12 @@ export const AppHeader = () => {
         dispatch(onLogout())
         navigate('/login')
     }
-
     const logOutBtnStyle =
         !user ? ({ opacity: 0, pointerEvents: 'none' }) : {}
 
     return (
         <header className='app-header'>
+            <BodyColor/>
             <div className='nav-line-container'>
                 <div>
                     <button onClick={onToggleModal} className="logout-btn user-info" style={logOutBtnStyle}>

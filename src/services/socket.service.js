@@ -20,7 +20,7 @@ export const socketService = createSocketService()
 // export const socketService = createDummySocketService()
 
 // for debugging from console
-// window.socketService = socketService
+window.socketService = socketService
 
 socketService.setup()
 

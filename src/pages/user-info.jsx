@@ -13,7 +13,6 @@ export const UsersInfo = () => {
     }, [])
 
     console.log(selectedUser)
-    console.log('users', users)
     if (!users) return <></>
     return (
         <section className="users-container">

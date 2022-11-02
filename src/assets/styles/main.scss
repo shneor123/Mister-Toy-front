@@ -30,5 +30,34 @@
 @import "cmps/star-rate";
 @import "cmps/toy-filter";
 @import "cmps/chat-app-toogle";
+@import "cmps/app-header";
+@import "cmps/app-footer";
 
 @import "cmps/main-manu";
+
+.color-container {
+    position: relative;
+}
+.color-menu {
+    display: flex;
+    position: absolute;
+    bottom: -33px;
+    left: -120px;
+    // background: rgba(157, 27, 223, 0.475);
+    justify-content: space-between;
+    border-radius: 5px;
+}
+.color-menu .color-input {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin: 2px 10px;
+    border: 1px solid #fff;
+    display: inline-block;
+    opacity: 0.5;
+}
+.color-menu .color-input:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}

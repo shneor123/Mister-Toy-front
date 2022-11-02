@@ -45,11 +45,13 @@ function getEmptyToy() {
         src: '',
         price: '',
         labels: '',
-        createdAt: '',
+        createdAt: Date.now(),
         inStock: ''
     }
 }
 // TEST DATA
-// storageService.post(STORAGE_KEY,{_id: utilService.makeId(4),  name: "shneor123",
-// price: utilService.getRandomIntInclusive(1000, 9000),labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"],
-// createdAt: Date.now(),inStock: true})
+// storageService.post(STORAGE_KEY, {
+//     _id: utilService.makeId(4), name: "shneor123",
+//     price: utilService.getRandomIntInclusive(1000, 9000), labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"],
+//     createdAt: Date.now(),inStock: true
+// })

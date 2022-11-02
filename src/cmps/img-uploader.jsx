@@ -18,7 +18,7 @@ export const ImgUploader = (props) => {
 
   return (
     <div className="upload-preview"  >
-      {imgUrl && <img src={imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
+      {imgUrl && <img src={imgUrl} />}
       <label htmlFor="imgUpload">Computer</label>
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
     </div>

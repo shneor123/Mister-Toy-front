@@ -41,12 +41,12 @@
         flex-direction: column;
         gap: 10px;
         overflow-y: auto;
-      
+
         &::-webkit-scrollbar {
             height: 8px;
             width: 8px;
         }
-        
+
         &::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 100vw;
@@ -83,6 +83,19 @@
                 display: none;
             }
 
+            .since-review {
+                position: absolute;
+                bottom: 1px;
+                right: 5px;
+                color: $clr4;
+                display: none;
+                font-size: 10px;
+
+            }
+            
+            &:hover .since-review{
+                display: block;
+            }
             &:hover .delete-btn {
                 display: unset;
             }

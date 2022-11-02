@@ -10,7 +10,7 @@ export const AboutPage = () => {
             lat: 32.109333,
             lng: 34.855499
         },
-        zoom: 7,
+        zoom: 15,
         branches: [
             {
                 lat: 32.109333,
@@ -55,18 +55,17 @@ export const AboutPage = () => {
                     <div className='visit-us-container'>
                         <h2>Visit Us Here:</h2>
                         {branches.map(branch =>
-                                <h3 className='btn-classic1'
-                                    key={branch.lat}
-                                    onClick={() => onSetCenter(branch.lat, branch.lng)}>
-                                    {branch.name}
-                                </h3>
+                            <h3 key={branch.lat} onClick={() => onSetCenter(branch.lat, branch.lng)}>
+                                {branch.name}
+                            </h3>
                         )}
                     </div>
                 }
             </div>
 
-            <div className='map'>
+            <div className='map' style={{ borderRadius: '4px', }}>
                 <GoogleMapReact
+                    // style={{borderRadius: '5px'}}
                     bootstrapURLKeys={{ key: 'AIzaSyA7svj7Pw0bEG5od8w7lW9Mu8zKhfCMDrA' }}
                     defaultCenter={center}
                     center={center}

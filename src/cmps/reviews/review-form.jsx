@@ -1,5 +1,6 @@
 import React from "react"
 import { useState } from "react"
+import { ImgUploader } from "../img-uploader"
 import { StarsRate } from "./stars-rate"
 
 export const ReviewForm = ({ onAddReview }) => {
@@ -7,10 +8,11 @@ export const ReviewForm = ({ onAddReview }) => {
     const [state, setState] = useState({
         rate: 4,
         content: '',
+        createdAt: Date.now(),
+        imgUrl: ''
     })
 
     const focusRef = React.createRef()
-
 
     const handleChange = ev => {
         const { name, value } = ev.target
@@ -18,11 +20,10 @@ export const ReviewForm = ({ onAddReview }) => {
         setState({ ...state, [name]: value })
     }
 
-
     const onSubmit = async (ev) => {
         ev.preventDefault()
         onAddReview(state)
-        setState({ rate: 0, content: '' })
+        setState({ rate: 0, content: '', createdAt: Date.now(), })
     }
 
     const onChangeRate = (rate) => {
@@ -42,7 +43,6 @@ export const ReviewForm = ({ onAddReview }) => {
                 required
                 onChange={handleChange}>
             </textarea>
-
             <button>Add New Review</button>
         </form>
     )

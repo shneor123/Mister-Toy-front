@@ -4,18 +4,19 @@ import { ToyPreview } from './toy-preview'
 
 export function Toylist({ toys, onRemoveToy }) {
     return (
-        <Droppable droppableId="toy">
+        <Droppable droppableId={`${toys}`}>
             {(provided) => (
                 <section
                     className='toys-list-container'
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                 >
-                    {toys && toys.map((toy, index) => {
+                    {toys.map((toy, index) => {
                             return (
                                 <ToyPreview
                                 key={toy._id}
                                 toy={toy}
+                                toyId={toy._id}
                                 index={index}
                                 onRemoveToy={onRemoveToy}
                                 />

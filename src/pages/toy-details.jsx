@@ -16,7 +16,8 @@ import loader from '../assets/img/loader.gif'
 import { utilService } from "../services/util.service"
 
 export const ToyDetails = () => {
-    const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
+    const { reviews } = useSelector((storeState) => storeState.reviewModule)
+
     const [toy, setToy] = useState(null)
     const navigate = useNavigate()
     const params = useParams()
@@ -62,14 +63,13 @@ export const ToyDetails = () => {
                     <ReviewForm onAddReview={onAddReview} />
                     <ToyReview reviews={reviews} loggedInUser={loggedInUser} onRemoveReview={onRemoveReview} />
                 </div>
-
                 <div className="details-container">
                     <h1>{toy.name}</h1>
                     <h3>${toy.price}</h3>
                     <h4>Labels:{labels}</h4>
                     <h4 style={{ color }}>{stockDesc}in stock</h4>
-                    <p><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</p>
                     <img src={toy.src || imgDef}></img>
+                    <p><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</p>
                 </div>
             </div>
             <div className="toogle__modal">

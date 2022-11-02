@@ -1,6 +1,6 @@
 import { httpService } from './http.service';
 import axios from 'axios'
-import { utilService } from './util.service';
+import { storageService } from './async-storage.service';
 
 export const toyService = {
     query,
@@ -8,9 +8,9 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
+    changeBgc
 }
 window.cs = toyService;
-
 const BASE_URL = (process.env.NODE_ENV == 'production') ? '/api/toy' : '//localhost:3030/api/toy'
 const TOY_BASE_ENDPOINT = 'toy'
 
@@ -24,6 +24,15 @@ async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'c
     const toys = queryRes.data
     return toys
 }
+
+function changeBgc(toyId, color) {
+    const toys = storageService.query()
+    const toy = toys.find(toy => toy._id === toyId)
+    toy.style.backgroundColor = color
+    storageService.saveToStorage(toys)
+    return Promise.resolve(toy)
+}
+
 
 async function getById(toyId) {
     const toysFromDB = await httpService.get(`${TOY_BASE_ENDPOINT}/${toyId}`)
@@ -56,7 +65,7 @@ function getEmptyToy() {
         price: '',
         labels: '',
         createdAt: Date.now(),
-        inStock: ''
+        inStock: '',
     }
 }
 

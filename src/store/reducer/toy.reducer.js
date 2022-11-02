@@ -4,16 +4,14 @@ const initialState = {
         name: '',
         inStock: '',
         labels: '',
+        pageIdx: 0
     }
 }
-
-
 
 export function toyReducer(state = initialState, action) {
     var newState = state
     var toys
     switch (action.type) {
-
         case 'SET_TOYS':
             newState = { ...state, toys: action.toys }
             break

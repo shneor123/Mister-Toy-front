@@ -20,6 +20,12 @@ export function getActionUpdateToy(toy) {
         toy
     }
 }
+export function getActionSetToy(toy) {
+    return {
+        type: 'SET_TOY',
+        board: toy
+    }
+}
 
 
 export function loadToys() {
@@ -88,6 +94,7 @@ export function updateToy(toy) {
 }
 
 
+
 export function setFilter(filterBy) {
     return (dispatch) => {
         return dispatch({
@@ -148,21 +155,19 @@ export function handleDrag(
 }
 
 
-export function saveBg(toyId, color) {
+export function saveBg(toy, color) {
     return async (dispatch) => {
         try {
-            const savedToy = await toyService.getById(toyId)
+            const savedToy = await toyService.getById(toy._id)
             savedToy.style.background = color
             toyService.save(savedToy)
                 .then(toys => {
-                    const action = {
-                        type: 'SET_TOYS',
-                        toys
-                    }
-                    dispatch(action)
+                    dispatch(getActionUpdateToy(toys))
+                    showSuccessMsg('Toy saved')
                 })
         } catch (err) {
-            console.log('err in saving task');
+            console.log('err in saving task')
+            showErrorMsg('Cannot save toy')
         }
     }
 }

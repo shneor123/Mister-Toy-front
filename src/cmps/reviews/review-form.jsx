@@ -1,14 +1,13 @@
 import React from "react"
 import { useState } from "react"
-import { ImgUploader } from "../img-uploader"
 import { StarsRate } from "./stars-rate"
+import { utilService } from "../../services/util.service"
 
 export const ReviewForm = ({ onAddReview }) => {
 
     const [state, setState] = useState({
         rate: 4,
         content: '',
-        createdAt: Date.now(),
         imgUrl: ''
     })
 
@@ -23,7 +22,7 @@ export const ReviewForm = ({ onAddReview }) => {
     const onSubmit = async (ev) => {
         ev.preventDefault()
         onAddReview(state)
-        setState({ rate: 0, content: '', createdAt: Date.now(), })
+        setState({ rate: 0, content: '' })
     }
 
     const onChangeRate = (rate) => {

@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom"
 export const AppFooter = () => {
   const { pathname } = useLocation()
   let routeClass
-  if (pathname === "/" || pathname === "/about" || pathname === "/login" || pathname === "/signup") routeClass = "phome"
-
+  if (pathname === "/" || pathname === "/about" || pathname === "/login" || pathname === "/signup" || pathname === "/users" || pathname === "/reviews")
+    routeClass = "-home"
   return (
     <section>
       {pathname !== "/toy" && (

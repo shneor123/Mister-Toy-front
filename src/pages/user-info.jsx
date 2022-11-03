@@ -29,13 +29,16 @@ export const UsersInfo = () => {
                         <span>{user.isAdmin ? 'isAdmin' : ""}</span>
                         <h2>{user.fullname}</h2>
                         <p><strong>Member Since: </strong>{utilService.backendTimeStamp(user.createdAt)}</p>
+                        {/* <p><strong>Last seen{" "}{new Date(messages[messages.length - 1]?.createdAt?.toDate()).toUTCString()}</strong></p> */}
                         {!user.isAdmin &&
                             <button className='delete-btn' onClick={() => dispatch(removeUser(user._id))}>
                                 Remove -{user.username}
                             </button>
                         }
+
                     </div>)}
             </div>
+            
         </section >
     )
 }

@@ -5,6 +5,7 @@ export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
     if (!reviews) return <></>
     if (reviews.length === 0) return <h3>Weite first review!</h3>
 
+       const createdAt = Date.now()
     const getStarsStr = (count) => {
         const str = count === 0 ?
             '-no rate specified-' : String.fromCharCode(9733).repeat(count)

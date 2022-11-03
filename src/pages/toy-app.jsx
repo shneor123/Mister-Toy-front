@@ -7,10 +7,7 @@ import { Toylist } from '../cmps/toy-list'
 import { ToyFilter } from '../cmps/toy-filter'
 import { userService } from '../services/user.service'
 import { loadToys, removeToy, setFilter } from '../store/actions/toy.actions'
-
 import { AiOutlineSearch } from "react-icons/ai";
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
-import { PickerColor } from '../cmps/picker-color'
 
 export const ToyApp = () => {
 

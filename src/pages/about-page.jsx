@@ -18,9 +18,9 @@ export const AboutPage = () => {
                 name: 'Tel Aviv'
             },
             {
-                lat: 32.794044,
-                lng: 34.989571,
-                name: 'Haifa'
+                lat: 31.73,
+                lng:  34.75,
+                name: 'Kiryat Malachi'
             },
             {
                 lat: 31.771959,

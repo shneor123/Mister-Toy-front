@@ -15,9 +15,8 @@ import imgDef from '../assets/img/default.jpg'
 import loader from '../assets/img/loader.gif'
 import { utilService } from "../services/util.service"
 
-export const ToyDetails = () => {
+export const ToyDetails = (props) => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
-
     const [toy, setToy] = useState(null)
     const navigate = useNavigate()
     const params = useParams()
@@ -35,7 +34,6 @@ export const ToyDetails = () => {
         if (!toy) return navigate('/toy')
         setToy(toy)
     }
-
     const onRemoveReview = (reviewId) => {
         showSuccessMsg('Review removed')
         dispatch(removeReview(reviewId))
@@ -65,7 +63,7 @@ export const ToyDetails = () => {
                     <h1>{toy.name.length > 20 ? toy.name.substring(0, 15) + '...' : toy.name}</h1>
                     <h3>${toy.price}</h3>
                     <p><strong>author: </strong>{toy.author}</p>
-                    <h4>Labels:{labels}</h4>
+                    <h4>Labels: {labels}</h4>
                     <h4 style={{ color }}>{stockDesc}in stock</h4>
                     <img src={toy.src || imgDef}></img>
                     <p><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</p>

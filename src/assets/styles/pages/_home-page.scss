@@ -1,6 +1,7 @@
 .homepage-container {
   background: linear-gradient(1deg, #ffffff 0%, #eae6ff 80%);
 }
+
 .homepage-wrapper {
   max-width: 1140px;
   max-height: 575px;
@@ -76,17 +77,21 @@
   .homepage-hero {
     width: 710px;
   }
+
   .homepage {
     flex-direction: row;
   }
+
   .homepage-paragraph {
     text-align: left;
-  inline-size: 85%;
+    inline-size: 85%;
   }
+
   .homepage-title {
     text-align: left;
     inline-size: 90%;
   }
+
   .demo-btn {
     width: 30%;
   }

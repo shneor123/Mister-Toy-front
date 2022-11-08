@@ -1,16 +1,11 @@
 import React from 'react';
 import Swal from 'sweetalert2'
 
-export function Basket({ cartItems, onAddCart, onRemoveCart }) {
+export function Basket({ cartItems, onAddCart, onRemoveCart, onToggleCard }) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
-    const taxPrice = itemsPrice * 0.14
-    const shippingPrice = itemsPrice > 2000 ? 0 : 20
+    const taxPrice = itemsPrice * 0.17
+    const shippingPrice = itemsPrice > 600 ? 0 : 20
     const totalPrice = itemsPrice + taxPrice + shippingPrice
-
-
-    const deleteToyChat = () => {
-        cartItems.qty = null
-    }
 
     return (
         <aside className="block col-1">
@@ -58,13 +53,19 @@ export function Basket({ cartItems, onAddCart, onRemoveCart }) {
                             </div>
                         </div>
                         <hr />
-                        <div className="row">
-                            <button onClick={() => Swal.fire({
-                                icon: 'success',
-                                title: 'Thanks for buying',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })}> Checkout </button>
+                        <div className="row" >
+                            <button onClick={() =>
+                            setTimeout(() => {
+                                onToggleCard()
+                                Swal.fire({
+                                   icon: 'success',
+                                   title: 'Thanks for buying',
+                                   showConfirmButton: false,
+                                   timer: 1500
+                               })
+                                
+                            }, 1000)
+                            }> Checkout </button>
                         </div>
                     </>
                 )}

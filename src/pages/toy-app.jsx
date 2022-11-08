@@ -72,13 +72,6 @@ export const ToyApp = () => {
     }
   }
 
-
-  function removeFromCart(id) {
-    setCartItems(currItems => {
-      return currItems.filter(item => item.id !== id)
-    })
-  }
-
   const loggedInUser = userService.getLoggedinUser()
   if (!toys) return <>Loading...</>
   return (
@@ -112,6 +105,7 @@ export const ToyApp = () => {
           cartItems={cartItems}
           onAddCart={onAddCart}
           onRemoveCart={onRemoveCart}
+          onToggleCard={onToggleCard}
         />
       </div>}
     </section>

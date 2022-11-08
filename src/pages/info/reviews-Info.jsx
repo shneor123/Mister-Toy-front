@@ -9,11 +9,7 @@ import { loadReviews, removeReview } from '../../store/actions/review.action'
 export const ReviewsInfo = (props) => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
     const dispatch = useDispatch()
-
-    const [state, setState] = useState({
-        createdAt: Date.now(),
-    })
-
+    
     useEffect(() => {
         dispatch(loadReviews(null))
     }, [])
@@ -23,16 +19,14 @@ export const ReviewsInfo = (props) => {
             '-no rate specified-' : String.fromCharCode(9733).repeat(count)
         return str
     }
-
-    console.log(reviews)
-    if (!reviews) return <></>
-    if (reviews.length === 0) return <h3> Waiting for the first reviews!</h3>
-
     const onRemoveReview = (reviewId) => {
         showSuccessMsg('Review removed')
         dispatch(removeReview(reviewId))
     }
-    const { createdAt } = state
+    // console.log(reviews)
+    if (!reviews) return <></>
+    if (reviews.length === 0) return <h3> Waiting for the first reviews!</h3>
+    // const { createdAt } = props.reviews
     return (
         <section className="reviews-container">
             <div className="review-inf">reviews: {reviews.length}</div>
@@ -57,7 +51,7 @@ export const ReviewsInfo = (props) => {
                         </p>
                         <p className='since-review'>
                             <strong>since:{" "}</strong>
-                            {utilService.dateToString(createdAt)}
+                            {utilService.makeId(review.createdAt)}
                         </p>
                         {(!props.loggedInUser?.isAdmin || props.loggedInUser?._id === review.byUser._id)
                             && <button className='delete-btn'

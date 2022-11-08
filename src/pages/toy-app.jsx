@@ -72,6 +72,13 @@ export const ToyApp = () => {
     }
   }
 
+
+  function removeFromCart(id) {
+    setCartItems(currItems => {
+      return currItems.filter(item => item.id !== id)
+    })
+  }
+
   const loggedInUser = userService.getLoggedinUser()
   if (!toys) return <>Loading...</>
   return (
@@ -81,7 +88,7 @@ export const ToyApp = () => {
           <button onClick={onToggleModal} className="btn-opt"><AiOutlineSearch /> Filter cards</button>
         </section>
 
-        {isOpenModal && <div className='filter-open '>
+        {isOpenModal && <div className='filter-open slide-in-left '>
           <ToyFilter onChangeFilter={onChangeFilter} />
         </div>}
 
@@ -101,7 +108,11 @@ export const ToyApp = () => {
           {cartItems.length}</span>
       </Button>
       {isOpenCard && <div className='slide-in-right '>
-        <Basket cartItems={cartItems} onAddCart={onAddCart} onRemoveCart={onRemoveCart} toy={toys} />
+        <Basket
+          cartItems={cartItems}
+          onAddCart={onAddCart}
+          onRemoveCart={onRemoveCart}
+        />
       </div>}
     </section>
   )

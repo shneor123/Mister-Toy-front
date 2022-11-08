@@ -1,5 +1,5 @@
-import { Alert } from '@mui/material';
 import React from 'react';
+import Swal from 'sweetalert2'
 
 export function Basket({ cartItems, onAddCart, onRemoveCart }) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
@@ -7,7 +7,11 @@ export function Basket({ cartItems, onAddCart, onRemoveCart }) {
     const shippingPrice = itemsPrice > 2000 ? 0 : 20
     const totalPrice = itemsPrice + taxPrice + shippingPrice
 
-    // console.log(cartItems)
+
+    const deleteToyChat = () => {
+        cartItems.qty = null
+    }
+
     return (
         <aside className="block col-1">
             <header style={{ marginTop: '30px' }} className="row">
@@ -55,14 +59,16 @@ export function Basket({ cartItems, onAddCart, onRemoveCart }) {
                         </div>
                         <hr />
                         <div className="row">
-                            <button onClick={() =>
-                                alert('Implement Checkout!')}>
-                            Checkout
-                        </button>
-                    </div>
+                            <button onClick={() => Swal.fire({
+                                icon: 'success',
+                                title: 'Thanks for buying',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })}> Checkout </button>
+                        </div>
                     </>
                 )}
-        </div>
+            </div>
         </aside >
     )
 }

@@ -10,10 +10,10 @@ import { UserMsg } from "./cmps/user-msg";
 import { ToyEdit } from "./cmps/toy-edit";
 import { LoginSignup } from "./login/login-signup";
 import { ToyDetails } from "./pages/toy-details";
-import { UsersInfo } from "./pages/user-info";
-import { ReviewsInfo } from "./pages/reviews-Info";
 import { Dashboard } from "./pages/toy-dashboard";
-import { AppFooter } from "./cmps/app-footer";
+import { ReviewsInfo } from "./pages/info/reviews-Info";
+import { UsersInfo } from "./pages/info/user-info";
+import { AppFooter } from "./pages/info/app-footer";
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
         <Route element={<UsersInfo />} path={"/users"} />
         <Route element={<ReviewsInfo />} path={"/reviews"} />
       </Routes>
-      <AppFooter />
+      {/* <AppFooter /> */}
     </Router>
   )
 }

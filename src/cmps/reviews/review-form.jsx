@@ -8,7 +8,6 @@ export const ReviewForm = ({ onAddReview }) => {
     const [state, setState] = useState({
         rate: 4,
         content: '',
-        imgUrl: ''
     })
 
     const focusRef = React.createRef()

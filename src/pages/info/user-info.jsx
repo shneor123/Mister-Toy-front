@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { utilService } from '../services/util.service'
-import { loadUsers, removeUser } from "../store/actions/user.actions"
+import { utilService } from '../../services/util.service'
+import { loadUsers, removeUser } from "../../store/actions/user.actions"
 
 export const UsersInfo = () => {
     const { users } = useSelector((storeState) => storeState.userModule)

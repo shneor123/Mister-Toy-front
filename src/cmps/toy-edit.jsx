@@ -47,7 +47,7 @@ export const ToyEdit = () => {
     if (!toy) return <img src={loader}></img>
     const allLabels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor']
 
-    const { name, price, src, inStock } = toy
+    const { name, price, src, inStock, author } = toy
     return (
         <section className="toy-edit">
             <h2>{toy._id ? 'Edit' : 'Add'} Toy</h2>
@@ -75,6 +75,12 @@ export const ToyEdit = () => {
                         <input
                             type="text" name="src" value={src}
                             placeholder="Link" onChange={handleChange} />
+                    </label>
+                    <label>
+                        <h3>author</h3>
+                        <input
+                            type="text" name="author" value={author}
+                            placeholder="author exmpale (by Wonder House )" onChange={handleChange} />
                     </label>
                 </div>
 

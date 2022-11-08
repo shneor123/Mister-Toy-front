@@ -70,7 +70,7 @@ export function addToy(toy) {
                     msg: { type: 'success', txt: 'Toy saved' }
                 })
                 socketService.emit('toy-saved')
-                // showSuccessMsg('Toy saved')
+                showSuccessMsg('Toy saved')
             })
             .catch(err => {
                 console.log('Cannot add toy', err)

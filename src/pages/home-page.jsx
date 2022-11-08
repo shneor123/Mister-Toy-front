@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export const HomePage = () => {
     return (
         <section className="homepage-container">
+            <Link to={'/login'}>Login</Link>
             <section className="homepage-wrapper">
                 <section className="homepage">
                     <div className="homepage-text">

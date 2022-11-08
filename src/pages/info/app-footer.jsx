@@ -12,7 +12,8 @@ export const AppFooter = () => {
           &copy;  All rights not reserved
         </div>
       )}
-      {pathname === "/toy" && <div>&copy;  All rights not reserved</div>}
+      {pathname === "/toy" && <div className={`footer${pathname}`}>&copy;  All rights not reserved</div>}
+
     </section>
   )
 }

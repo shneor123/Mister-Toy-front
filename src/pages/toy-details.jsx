@@ -46,7 +46,6 @@ export const ToyDetails = () => {
         dispatch(loadReviews({ aboutToyId: toy._id }))
     }
 
-
     if (!toy) return <div className="loader-container">
         <img src={loader}></img></div>
 
@@ -54,7 +53,6 @@ export const ToyDetails = () => {
     const color = toy.inStock ? 'green' : 'red'
     const labels = toy.labels ? toy.labels.join(', ') + '.' : 'No labels specified'
     const loggedInUser = userService.getLoggedinUser()
-
     return (
         <section className="details-page-container">
             <Link className='back-btn' to={'/toy'}> Back </Link>
@@ -64,8 +62,9 @@ export const ToyDetails = () => {
                     <ToyReview reviews={reviews} loggedInUser={loggedInUser} onRemoveReview={onRemoveReview} />
                 </div>
                 <div className="details-container">
-                    <h1>{toy.name}</h1>
+                    <h1>{toy.name.length > 20 ? toy.name.substring(0, 15) + '...' : toy.name}</h1>
                     <h3>${toy.price}</h3>
+                    <p><strong>author: </strong>{toy.author}</p>
                     <h4>Labels:{labels}</h4>
                     <h4 style={{ color }}>{stockDesc}in stock</h4>
                     <img src={toy.src || imgDef}></img>

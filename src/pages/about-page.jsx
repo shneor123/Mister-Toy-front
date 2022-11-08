@@ -11,6 +11,7 @@ export const AboutPage = () => {
             lng: 34.855499
         },
         zoom: 15,
+        address: '',
         branches: [
             {
                 lat: 32.109333,
@@ -19,7 +20,7 @@ export const AboutPage = () => {
             },
             {
                 lat: 31.73,
-                lng:  34.75,
+                lng: 34.75,
                 name: 'Kiryat Malachi'
             },
             {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { LogOut } from '../login/logout'
@@ -8,9 +9,9 @@ import { BodyColor } from './body-color'
 export const AppHeader = () => {
     const { toys } = useSelector((storeState) => storeState.toyModule)
     const { user } = useSelector((storeState) => storeState.userModule)
+    const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { pathname } = useLocation()
     const [isOpenModal, setIsOpenModal] = useState(false)
 
     const onToggleModal = () => {
@@ -27,7 +28,7 @@ export const AppHeader = () => {
 
     return (
         <header className='app-header'>
-            <BodyColor/>
+            <BodyColor />
             <div className='nav-line-container'>
                 <div>
                     <button onClick={onToggleModal} className="logout-btn user-info" style={logOutBtnStyle}>
@@ -49,9 +50,7 @@ export const AppHeader = () => {
                         <div onClick={onUserLogout}>
                             <LogOut user={user} />
                         </div>
-                    </div>
-
-                    }
+                    </div>}
                 </div>
                 <nav className='nav-links '>
                     <NavLink to="/">Home</NavLink>
@@ -63,10 +62,8 @@ export const AppHeader = () => {
                 <div className="header-titles-container">
                     <Link className="mister-toy-logo wobble-hor-bottom " to="/toy">
                         <h1>Mister Toy</h1></Link>
-                    <div className="header-inf">
-                        {pathname === '/toy' && <h3>Toys: {toys.length}</h3>}
-                    </div>
-                </div>}
+                    <div className="header-inf">{pathname === '/toy' && <h3>Toys: {toys.length}</h3>}</div></div>
+            }
         </header>
     )
 }

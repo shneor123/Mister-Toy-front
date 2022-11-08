@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { showSuccessMsg } from '../services/event-bus.service'
-import { utilService } from '../services/util.service'
-import { loadReviews, removeReview } from '../store/actions/review.action'
+import { showSuccessMsg } from '../../services/event-bus.service'
+import { utilService } from '../../services/util.service'
+import { loadReviews, removeReview } from '../../store/actions/review.action'
 
 export const ReviewsInfo = (props) => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)

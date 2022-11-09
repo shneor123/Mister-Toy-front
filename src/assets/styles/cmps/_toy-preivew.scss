@@ -23,7 +23,6 @@
         top: 20px;
     }
 
-
     span {
         background-color: rgb(148, 154, 130);
         border-radius: 5px;
@@ -31,7 +30,7 @@
         margin-top: 3px;
 
         &:hover {
-            font-size: 18px;
+            font-size: 14px;
         }
 
         &:active {
@@ -113,7 +112,6 @@
         border: none;
         width: 28px;
         height: 28px;
-        font-size: 1.2em;
         margin: 0 3px;
         display: flex;
         align-items: center;

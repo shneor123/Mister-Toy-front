@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import GoogleMapReact from 'google-map-react'
+import AboutPagesss from '../cmps/auto-coplete'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>
 

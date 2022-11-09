@@ -6,9 +6,16 @@
     height: 100%;
     width: 370px;
     border-radius: 0.5rem;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 2px 1px 0px 0px gray;
 
+    @include for-mobile-layout {
+        position: absolute;
+        right: 10px;
+        z-index: 2000;
+        box-shadow: none;
+        height: 100vh;
+    }
 
     .col-1 {
         flex: 1;

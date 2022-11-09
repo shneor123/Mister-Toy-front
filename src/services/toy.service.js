@@ -12,7 +12,7 @@ window.cs = toyService;
 const BASE_URL = (process.env.NODE_ENV == 'production') ? '/api/toy' : '//localhost:3030/api/toy'
 const TOY_BASE_ENDPOINT = 'toy'
 
-async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'created' }) {
+async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'created', pageIdx: 0 }) {
     if (filterBy.labels.length === 7 || filterBy.labels.includes('all')) filterBy.labels = []
     const url = `${BASE_URL}?name=${filterBy.name}&inStock=${filterBy.inStock}&labels=${filterBy.labels}&sortBy=${filterBy.sort}`
     const queryRes = await axios.get(url)

@@ -65,10 +65,6 @@ export function addToy(toy) {
         toyService.save(toy)
             .then(savedToy => {
                 dispatch(getActionAddToy(savedToy))
-                dispatch({
-                    type: 'SET_MSG',
-                    msg: { type: 'success', txt: 'Toy saved' }
-                })
                 socketService.emit('toy-saved')
                 showSuccessMsg('Toy saved')
             })
@@ -99,22 +95,5 @@ export function setFilter(filterBy) {
             type: 'SET_FILTERBY',
             filterBy,
         })
-    }
-}
-
-export function saveBg(toy, color) {
-    return async (dispatch) => {
-        try {
-            const savedToy = await toyService.getById(toy._id)
-            savedToy.style.background = color
-            toyService.save(savedToy)
-                .then(toys => {
-                    dispatch(getActionUpdateToy(toys))
-                    showSuccessMsg('Toy saved')
-                })
-        } catch (err) {
-            console.log('err in saving task')
-            showErrorMsg('Cannot save toy')
-        }
     }
 }

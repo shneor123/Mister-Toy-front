@@ -1,42 +1,13 @@
-.background-teaser-container {
-    .board-background {
-        align-items: center;
-        display: flex;
-        margin-top: 8px;
-    }
-
-    .image-container {
-        box-sizing: border-box;
-        color: #172b4d;
-        cursor: pointer;
-        font-size: 14px;
-        margin-bottom: 15px;
-        padding: 0 4px;
-        position: relative;
-        text-align: center;
-        transition: .2s ease-in-out;
-        width: 50%;
-
-        &:hover {
-            opacity: .7;
-        }
-
-        &.background-color-teaser {
-            padding-left: 0;
-            padding-right: 8px;
-        }
-
-        img {
-            border-radius: 8px;
-            height: 96px;
-            width: 100%;
-        }
-    }
-}
-
 .upper-side-menu {
     margin: 10px 0px;
 
+    @include for-mobile-layout {
+        position: absolute;
+        z-index: 1000;
+        left: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
 
     .btn-opt {
         cursor: pointer;
@@ -77,6 +48,7 @@
 .color-container {
     position: relative;
 }
+
 .color-menu {
     display: flex;
     position: absolute;
@@ -86,6 +58,7 @@
     justify-content: space-between;
     border-radius: 5px;
 }
+
 .color-menu .color-input {
     cursor: pointer;
     width: 20px;
@@ -96,6 +69,7 @@
     display: inline-block;
     opacity: 0.5;
 }
+
 .color-menu .color-input:hover {
     transform: scale(1.1);
     opacity: 1;

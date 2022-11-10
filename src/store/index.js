@@ -5,14 +5,11 @@ import thunk from 'redux-thunk'
 import { toyReducer } from './reducer/toy.reducer';
 import { userReducer } from './reducer/user.reducer';
 import { reviewReducer } from './reducer/review.reducer';
-import { cartReducer } from './reducer/cart.reducer';
-
 
 const rootReducer = combineReducers({
     toyModule: toyReducer,
     userModule: userReducer,
     reviewModule: reviewReducer,
-    cartModule: cartReducer,
 
 
 })

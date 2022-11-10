@@ -20,39 +20,36 @@ export const ToyPreview = ({ toy, onRemoveToy, onAddCart, toyId, index }) => {
     const loggedInUser = userService.getLoggedinUser()
     const { createdAt } = toy
     return (
-        <>
-            <Draggable key={toy._id} draggableId={toy._id} index={index}>
+        <div>
+            <Draggable draggableId={toy._id} index={index}>
                 {(provided) => (
                     <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
                     >
-
-                    <article className="toy-container"
-                        style={{ backgroundColor: blockPickerColor }}
-                    >
-                        <h3>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h3>
-                        <h4>${toy.price}</h4>
-                        <p className='sale'>{toy.price < 60 ? sale.isOnSale : ""}</p>
-                        <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
-                        <div className="img-container"><img src={toy.src || imgDef} /></div>
-                        <span style={{ cursor: 'pointer' }} onClick={() => onAddCart(toy)}> + Add To Cart</span>
-                        <div className="btns-container">
-                            {(loggedInUser?.isAdmin) && <>
-                                <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />
-                                <button className="delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
-                                <Link to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
-                                <Link to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
-                            </>}
-                            <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
-                                <button><img src={details} /></button></Link>}</div>
-                        </div>
-                    </article >
+                        <article className="toy-container" style={{ backgroundColor: blockPickerColor }}>
+                            <h3>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h3>
+                            <h4>${toy.price}</h4>
+                            <p className='sale'>{toy.price < 60 ? sale.isOnSale : ""}</p>
+                            <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
+                            <div className="img-container"><img src={toy.src || imgDef} /></div>
+                            <span style={{ cursor: 'pointer' }} onClick={() => onAddCart(toy)}> + Add To Cart</span>
+                            <div className="btns-container">
+                                {(loggedInUser?.isAdmin) && <>
+                                    <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />
+                                    <button className="delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
+                                    <Link to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
+                                    <Link to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
+                                </>}
+                                <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
+                                    <button><img src={details} /></button></Link>}</div>
+                            </div>
+                        </article >
                     </div>
                 )}
             </Draggable>
-        </>
+        </div>
     )
 }
 

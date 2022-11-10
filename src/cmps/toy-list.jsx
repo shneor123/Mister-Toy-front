@@ -4,7 +4,6 @@ import { ToyPreview } from './toy-preview'
 
 export function Toylist({ toys, onRemoveToy, onAddCart, onRemoveCart }) {
     return (
-        <>
             <Droppable droppableId="toys-list-container">
                 {(provided) => (
                     <div
@@ -31,7 +30,6 @@ export function Toylist({ toys, onRemoveToy, onAddCart, onRemoveCart }) {
                 )
                 }
             </Droppable>
-        </>
     )
 }
 

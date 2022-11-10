@@ -1,0 +1,142 @@
+.toy-filter {
+    background-color: #e0e0e0;
+    border: 1px solid #a38f8f;
+    padding: 1rem;
+    margin: 0.5rem;
+    height: 100vh;
+    width: 300px;
+    border-radius: 0.5rem;
+    z-index: 1000;
+    box-shadow: 2px 1px 0px 0px gray;
+
+    // @include for-mobile-layout {
+    //     position: absolute;
+    //     right: 10px;
+    //     z-index: 2000;
+    //     box-shadow: none;
+    //     height: 100vh;
+    // }
+
+    .add-toy-btn {
+        width: 10em;
+        height: 2em;
+    }
+
+    .toy-filter-opts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-block-start: 1em;
+        gap: 1em;
+
+        .sort {
+            padding: 8px;
+            border-radius: 10px;
+            background-color: $clr3;
+            border: 1px solid black;
+            margin-top: 10px;
+
+            strong:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .sortBy {
+            margin-top: 70px;
+        }
+
+        .page-btns {
+            display: flex;
+            gap: 2em;
+        }
+
+        & .labels-contianer {
+            position: relative;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: rgb(239 239 238);
+
+            >svg {
+                font-size: 1px;
+                position: absolute;
+                right: 0px;
+                opacity: 0.5;
+            }
+        }
+
+        & .labels-contianer>*:not(.toggle-visable) {
+            cursor: pointer;
+            width: 16em;
+        }
+
+        & .disabeld-inp {
+            height: 2em;
+        }
+
+
+        & .filter-labels {
+            cursor: pointer;
+            z-index: 10;
+            position: absolute;
+            left: 0;
+            top: 2em;
+            overflow: hidden;
+            width: 20em;
+            text-align: center;
+            height: 7.3rem;
+        }
+
+        input[type=text]:not(.disabeld-inp) {
+            width: 16em;
+            height: 2em;
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            border-radius: .2em;
+            cursor: pointer;
+        }
+
+        input::selection {
+            outline: none;
+        }
+
+        select[name=inStock],
+        select[name=sort] {
+            cursor: pointer;
+            width: 16em;
+            height: 2em;
+            border: none;
+            border-radius: 0.3em;
+        }
+
+        select[name=sort] {
+            margin-top: 4px;
+        }
+
+    }
+}
+
+.pop-up-menu {
+    z-index: 1000;
+    border-radius: 3px;
+    color: #fff;
+    background-color: $clr4;
+    font-size: 14px;
+    height: 32px;
+    line-height: 22px;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    padding: 8px;
+    align-self: flex-end;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    width: 130px;
+    display: block;
+    margin: 10px 55px;
+    cursor: pointer;
+}

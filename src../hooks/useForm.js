@@ -14,15 +14,25 @@ export const useForm = (initialFields, cb) => {
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
 
-    useEffectUpdate(() => {
-        if (cb) cb(fields)
+    const clearFields = (field) => {
+        setFields((prevFields) => {
+            if (field) {
+                return { ...prevFields, [field]: '' }
+            }
+            const newObj = {}
+            for (const i in prevFields) {
+                newObj[i] = ''
+            }
+            return newObj
+        })
+    }
 
-    }, [fields])
 
     // if(cb) cb()
     return [
         fields,
         handleChange,
+        clearFields,
         setFields,
     ]
 }

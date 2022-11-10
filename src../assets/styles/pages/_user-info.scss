@@ -1,0 +1,82 @@
+.users-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+
+    .user-inf {
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: -33px;
+        margin-right: -88%;
+        background-color: $clr3;
+        padding: 5px;
+        border-radius: 15px;
+        border: 1px solid rgb(24, 20, 20);
+        box-shadow: 5px 5px 6px -3px $clr1;
+
+        &:hover {
+            color: $clr5;
+        }
+    }
+}
+
+.user-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: center;
+    width: 90%;
+
+    *>p {
+        padding: 0 10px 0 10px;
+    }
+
+    *>button {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    *>span {
+        margin-top: -20px;
+        margin-left: -135px;
+    }
+}
+
+.user-preview {
+    margin-top: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $clr3;
+    box-shadow: 5px 5px 6px -3px $clr1;
+    border-radius: 0.3em;
+    gap: 0.2em;
+
+    &.selected {
+        outline: 5px solid $clr1;
+    }
+}
+
+.review-list.users-list {
+    max-height: 300px;
+
+    >* {
+        justify-content: space-between;
+    }
+}
+
+.user-img-container {
+    >img {
+        height: 50px;
+        width: 50px;
+        margin-top: 10px;
+        border-radius: 50%;
+    }
+}

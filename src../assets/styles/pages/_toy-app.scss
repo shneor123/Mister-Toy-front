@@ -1,0 +1,23 @@
+.toy-app {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    position: relative;
+
+    .add-btn {
+        background-color: $clr4;
+        color: #fff;
+        padding: 5px;
+        position: absolute;
+        top: 0em;
+        left: 50%;
+        border-top: 1px solid #fff;
+        padding: 10px 20px 10px 20px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        &:hover {
+            color: $clr2;
+        }
+    }
+}

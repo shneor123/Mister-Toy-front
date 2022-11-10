@@ -1,0 +1,104 @@
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 65vh;
+    min-width: 200px;
+    margin: 80px auto;
+    background-color: $clr3;
+    border-radius: 15px;
+    padding: 5px 15px;
+    position: relative;
+
+    .review-inf {
+        position: absolute;
+        top: -21%;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: -185%;
+        background-color: $clr3;
+        padding: 5px;
+        border-radius: 15px;
+        border: 1px solid rgb(24, 20, 20);
+        box-shadow: 5px 5px 6px -3px $clr1;
+
+        &:hover {
+            color: $clr5;
+        }
+    }
+
+}
+
+.reviews-container {
+    justify-content: flex-start;
+
+    .toy-reviews {
+        flex-grow: 1;
+        margin-top: 5px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 100vw;
+            margin-left: 2vw;
+            margin-right: 2vw;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(236, 230, 230, 0.456);
+            border-radius: 100vw;
+        }
+
+        .toy-review {
+            height: fit-content;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: left;
+            position: relative;
+            overflow-wrap: break-word;
+            background-color: white;
+
+            p {
+                overflow-wrap: break-word;
+                text-align: left;
+                margin: 5px 0px;
+            }
+
+            .delete-btn {
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                background: none;
+                color: $clr4;
+                display: none;
+            }
+
+            .since-review {
+                position: absolute;
+                bottom: 1px;
+                right: 5px;
+                color: $clr4;
+                display: none;
+                font-size: 10px;
+
+            }
+            
+            &:hover .since-review{
+                display: block;
+            }
+            &:hover .delete-btn {
+                display: unset;
+            }
+        }
+    }
+}

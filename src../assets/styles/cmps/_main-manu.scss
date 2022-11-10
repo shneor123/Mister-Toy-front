@@ -1,0 +1,76 @@
+.upper-side-menu {
+    margin: 10px 0px;
+
+    @include for-mobile-layout {
+        position: absolute;
+        z-index: 1000;
+        left: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+    .btn-opt {
+        cursor: pointer;
+        background-color: transparent;
+        background-color: initial;
+        border: none;
+        border-radius: 3px;
+        color: #172b4d;
+        font-weight: 600;
+        line-height: 20px;
+        padding: 6px 6px 6px 28px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        width: 100%;
+
+        &:hover {
+            background-color: #091e4214;
+            color: #172b4d;
+        }
+
+        svg {
+            font-size: 20px;
+            height: 20px;
+            left: 0;
+            line-height: 20px;
+            position: absolute;
+            top: 6px;
+            width: 20px;
+        }
+    }
+}
+
+
+
+
+
+.color-container {
+    position: relative;
+}
+
+.color-menu {
+    display: flex;
+    position: absolute;
+    bottom: -33px;
+    left: -120px;
+    // background: rgba(157, 27, 223, 0.475);
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.color-menu .color-input {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin: 2px 10px;
+    border: 1px solid #fff;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.color-menu .color-input:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}

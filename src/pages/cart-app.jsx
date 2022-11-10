@@ -1,7 +1,5 @@
 import React from 'react';
 import Swal from 'sweetalert2'
-import { GrClose } from 'react-icons/gr'
-
 
 export function CartApp({ cartItems, onAddCart, onRemoveCart, onToggleCard, clearCart }) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)

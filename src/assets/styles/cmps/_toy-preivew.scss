@@ -24,17 +24,15 @@
     }
 
     span {
-        background-color: rgb(148, 154, 130);
+        background-color: #4049f0cb;
+        border: 2px solid red;
         border-radius: 5px;
         padding: 4px;
         margin-top: 3px;
 
-        &:hover {
-            font-size: 14px;
-        }
-
         &:active {
             background-color: #f0c040;
+            transition: 0.2s;
         }
     }
 
@@ -77,10 +75,13 @@
 
     .btns-container {
         display: flex;
-        // align-self: flex-start;
         margin-left: 5px;
         margin-top: 5px;
         visibility: hidden;
+
+        @include for-mobile-layout {
+            visibility: unset;
+        }
 
         img {
             width: 18px;

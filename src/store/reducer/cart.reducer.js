@@ -1,5 +1,7 @@
 const initialState = {
     carts: [],
+    cart: null,
+
 }
 
 export function cartReducer(state = initialState, action) {
@@ -7,7 +9,10 @@ export function cartReducer(state = initialState, action) {
     var carts
     switch (action.type) {
         case 'SET_CARTS':
-            newState = { ...state, carts: action.carts }
+            carts = state.carts.map(cart => {
+                return (cart._id === action.cart._id) ? action.cart : cart
+            })
+            newState = { ...state, cart: { ...action.cart }, carts }
             break
 
         case 'REMOVE_CART':

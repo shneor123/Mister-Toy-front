@@ -44,8 +44,13 @@ export const ToyDetails = (props) => {
         dispatch(loadReviews({ aboutToyId: toy._id }))
     }
 
+    const [sale, setSale] = useState({
+        isOnSale: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqrzg7Qy2OdzrNItpC4SsYx3aEVtt1SmLuA&usqp=CAU' />
+    })
     if (!toy) return <div className="loader-container">
         <img src={loader}></img></div>
+
+
 
     const stockDesc = toy.inStock ? '' : 'Not '
     const color = toy.inStock ? 'green' : 'red'
@@ -61,6 +66,7 @@ export const ToyDetails = (props) => {
                 </div>
                 <div className="details-container">
                     <h1>{toy.name.length > 20 ? toy.name.substring(0, 15) + '...' : toy.name}</h1>
+                    <p className='sale-img-details'>{toy.price < 60 ? sale.isOnSale : ""}</p>
                     <h3>${toy.price}</h3>
                     <p><strong>author: </strong>{toy.author}</p>
                     <h4>Labels: {labels}</h4>

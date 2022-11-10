@@ -9,8 +9,9 @@ import trash from "../assets/img/trash.png"
 import edit from "../assets/img/edit.png"
 import details from "../assets/img/details.png"
 import imgDef from '../assets/img/default.jpg'
+import { Draggable } from 'react-beautiful-dnd';
 
-export const ToyPreview = ({ toy, onRemoveToy, onAddCart }) => {
+export const ToyPreview = ({ toy, onRemoveToy, onAddCart, toyId, index }) => {
     const [sale, setSale] = useState({
         isOnSale: <img className='sale-img-preview' src='https://static5.depositphotos.com/1039762/473/i/600/depositphotos_4735393-stock-photo-red-sale-tag.jpg' />
     })
@@ -19,24 +20,39 @@ export const ToyPreview = ({ toy, onRemoveToy, onAddCart }) => {
     const loggedInUser = userService.getLoggedinUser()
     const { createdAt } = toy
     return (
-        <article className="toy-container" style={{ backgroundColor: blockPickerColor }}>
-            <h3>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h3>
-            <h4>${toy.price}</h4>
-            <p className='sale'>{toy.price < 60 ? sale.isOnSale : ""}</p>
-            <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
-            <div className="img-container"><img src={toy.src || imgDef} /></div>
-            <span style={{ cursor: 'pointer' }} onClick={() => onAddCart(toy)}> + Add To Cart</span>
-            <div className="btns-container">
-                {(loggedInUser?.isAdmin) && <>
-                    <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />
-                    <button className="delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
-                    <Link to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
-                    <Link to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
-                </>}
-                <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
-                    <button><img src={details} /></button></Link>}</div>
-            </div>
-        </article >
+        <>
+            <Draggable key={toy._id} draggableId={toy._id} index={index}>
+                {(provided) => (
+                    <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    >
+
+                    <article className="toy-container"
+                        style={{ backgroundColor: blockPickerColor }}
+                    >
+                        <h3>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h3>
+                        <h4>${toy.price}</h4>
+                        <p className='sale'>{toy.price < 60 ? sale.isOnSale : ""}</p>
+                        <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
+                        <div className="img-container"><img src={toy.src || imgDef} /></div>
+                        <span style={{ cursor: 'pointer' }} onClick={() => onAddCart(toy)}> + Add To Cart</span>
+                        <div className="btns-container">
+                            {(loggedInUser?.isAdmin) && <>
+                                <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />
+                                <button className="delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
+                                <Link to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
+                                <Link to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
+                            </>}
+                            <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
+                                <button><img src={details} /></button></Link>}</div>
+                        </div>
+                    </article >
+                    </div>
+                )}
+            </Draggable>
+        </>
     )
 }
 

@@ -1,6 +1,17 @@
 .details-page-container {
-  width: 85%;
+  width: 90%;
   margin: auto;
+  position: relative;
+
+  .sale-img-details {
+    position: absolute;
+    left: 48%;
+    top: 40px;
+
+    @include for-mobile-layout {
+      display: hidden;
+    }
+  }
 
   .details-section {
     display: flex;

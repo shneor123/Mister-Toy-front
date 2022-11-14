@@ -15,7 +15,7 @@ import imgDef from '../assets/img/default.jpg'
 import loader from '../assets/img/loader.gif'
 import { utilService } from "../services/util.service"
 
-export const ToyDetails = (props) => {
+export const ToyDetails = () => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
     const [toy, setToy] = useState(null)
     const navigate = useNavigate()

@@ -11,6 +11,7 @@ import { loadToys, removeToy, setFilter } from '../store/actions/toy.actions'
 import { Button } from 'react-bootstrap'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { showSuccessMsg } from '../services/event-bus.service'
+import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions'
 
 export const ToyApp = () => {
   const { toys } = useSelector((storeState) => storeState.toyModule)
@@ -48,13 +49,20 @@ export const ToyApp = () => {
     dispatch(loadToys())
   }
 
-  const onAddCart = (product) => {
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return
+    const items = Array.from(characters)
+    const [reorderedItem] = items.splice(result.source.index, 1)
+    items.splice(result.destination.index, 0, reorderedItem)
+    updateCharacters(items)
+  }
+
+  const onAddToCart = (product) => {
     const exist = cartItems.find((x) => x._id === product._id)
     if (exist) {
-      setCartItems(cartItems.map((x) =>
-        x._id === product._id ? { ...exist, qty: exist.qty + 1 } : x))
+      dispatch(addToCart(setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty + 1 } : x))))
     } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }])
+      dispatch(addToCart(setCartItems([...cartItems, { ...product, qty: 1 }])))
       showSuccessMsg(`Added ${product.name} to Cart`)
     }
   }
@@ -62,25 +70,17 @@ export const ToyApp = () => {
   const onRemoveCart = (product) => {
     const exist = cartItems.find((x) => x._id === product._id)
     if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x._id !== product._id))
+      dispatch(removeFromCart(setCartItems(cartItems.filter((x) => x._id !== product._id))))
       showSuccessMsg(`Removed ${product.name} From Cart`)
     } else {
-      setCartItems(cartItems.map((x) =>
-          x._id === product._id ? { ...exist, qty: exist.qty - 1 } : x))
+      dispatch(removeFromCart(setCartItems(cartItems.map((x) => x._id === product._id ? { ...exist, qty: exist.qty - 1 } : x))))
+
     }
   }
 
   const clearCart = (productToRemove) => {
     setCartItems(cartItems.filter(product => product._id === productToRemove))
     showSuccessMsg('Clear all cart successfully')
-  }
-
-  const handleOnDragEnd = (result) => {
-    if (!result.destination) return
-    const items = Array.from(characters)
-    const [reorderedItem] = items.splice(result.source.index, 1)
-    items.splice(result.destination.index, 0, reorderedItem)
-    updateCharacters(items)
   }
 
   const loggedInUser = userService.getLoggedinUser()
@@ -101,7 +101,7 @@ export const ToyApp = () => {
           // toys={characters}
           toys={toys}
           onRemoveToy={onRemoveToy}
-          onAddCart={onAddCart}
+          onAddToCart={onAddToCart}
           onRemoveCart={onRemoveCart}
         />
       </DragDropContext>
@@ -114,16 +114,16 @@ export const ToyApp = () => {
         </Button>
         {isOpenCard && <div className='slide-in-right'>
           {user.isAdmin && <button className="admin-clear-cart " onClick={clearCart}>Clear Cart</button>}
-
           <CartApp
             cartItems={cartItems}
-            onAddCart={onAddCart}
+            onAddToCart={onAddToCart}
             onRemoveCart={onRemoveCart}
             onToggleCard={onToggleCard}
             clearCart={clearCart}
           />
         </div>
-        }</>)}
+        }
+      </>)}
     </section>
   )
 }

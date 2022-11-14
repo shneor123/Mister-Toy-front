@@ -33,7 +33,6 @@ function App() {
         <Route element={<ReviewsInfo />} path={"/reviews"} />
         <Route element={<Dashboard />} path={"/toy/statistics"} />
       </Routes>
-      {/* <AppFooter /> */}
     </Router>
   )
 }

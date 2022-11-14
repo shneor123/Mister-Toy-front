@@ -1,5 +1,6 @@
 const initialState = {
     toys: [],
+    cart: [],
     filterBy: {
         name: '',
         inStock: '',
@@ -11,6 +12,8 @@ const initialState = {
 export function toyReducer(state = initialState, action) {
     var newState = state
     var toys
+    var cart
+
     switch (action.type) {
         case 'SET_TOYS':
             newState = { ...state, toys: action.toys }
@@ -29,6 +32,23 @@ export function toyReducer(state = initialState, action) {
         case 'UPDATE_TOYS':
             toys = state.toys.map(toy => (toy._id === action.toy._id) ? action.toy : toy)
             newState = { ...state, toys }
+            break
+
+        case 'ADD_TO_CART':
+            newState = { ...state, cart: [...state.cart, action.toy] }
+            break
+
+        case 'REMOVE_FROM_CART':
+            // cart = state.cart.filter(toy => toy._id !== action.toyId)
+            // newState = { ...state, cart }
+            const lastRemovedCart = state.cart.find(toy => toy === action.toyId)
+            cart = state.cart.filter(toy => toy !== action.toyId)
+            newState = { ...state, cart, lastRemovedCart }
+            break
+
+
+        case 'CLEAR_CART':
+            newState = { ...state, cart: [] }
             break
 
         case 'SET_FILTERBY':

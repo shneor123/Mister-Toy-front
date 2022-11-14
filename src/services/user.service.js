@@ -17,16 +17,6 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
-}
-
-
-async function changeScore(by) {
-    const user = getLoggedinUser()
-    if (!user) throw new Error('Not loggedin')
-    user.score = user.score + by || by
-    await update(user)
-    return user.score
 }
 
 

@@ -18,6 +18,7 @@
 @import "pages/toy-details";
 @import "pages/user-info";
 @import "pages/review-info";
+@import "pages/work-space";
 
 
 // Cmps
@@ -36,3 +37,8 @@
 @import "cmps/main-manu";
 @import "cmps/cart";
 
+// CMPS-BOARD
+@import "cmps/board/dynamic-modal-cmp";
+@import "cmps/board/new-board";
+@import "cmps/board/board-list";
+@import "cmps/board/board-preview";

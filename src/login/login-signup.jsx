@@ -4,7 +4,6 @@ import { useNavigate } from "react-router"
 import { Link, useLocation } from "react-router-dom"
 
 import { login, signup } from "../store/actions/user.actions"
-import { ImgUploader } from "../cmps/img-uploader"
 
 import leftHero from "../assets/svg/leftHero.svg"
 import rightHero from "../assets/svg/rightHero.svg"

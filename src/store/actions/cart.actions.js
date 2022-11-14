@@ -1,87 +1,49 @@
 import { cartService } from "../../services/cart.service";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
-import { socketService } from "../../services/socket.service";
-
-export function getActionRemoveCart(cartId) {
-    return {
-        type: 'REMOVE_CART',
-        cartId
-    }
-}
-export function getActionAddCart(cart) {
-    return {
-        type: 'ADD_CART',
-        cart
-    }
-}
-export function getActionUpdateCart(cart) {
-    return {
-        type: 'UPDATE_CARTS',
-        cart
-    }
-}
-export function getActionSetCart(cart) {
-    return {
-        type: 'SET_CARTS',
-        cart
-    }
-}
 
 
-export function loadCarts() {
-    return async (dispatch) => {
-        try {
-            await cartService.query()
-            dispatch(getActionSetCart())
-            showSuccessMsg('Cart query')
-            console.log('cart query successfully');
-        } catch (err) {
-            console.error('Error:', err)
-            showErrorMsg('Cannot load toys')
-        }
-    }
-}
-
-
-export function removeCart(cartId) {
-    return async (dispatch) => {
-        try {
-            await cartService.remove(cartId)
-            dispatch({ type: 'REMOVE_CART', cartId })
-            showSuccessMsg('Cart removed')
-            console.log('cart removed successfully');
-        } catch (err) {
-            showErrorMsg('Cannot remove cart')
-            console.log('Cannot remove cart', err)
-        }
-    }
-}
-
-export function addToy(cart) {
+export function removeFromCart(cartId) {
     return (dispatch) => {
-        cartService.save(cart)
-            .then(savedCart => {
-                dispatch(getActionAddCart(savedCart))
-                socketService.emit('toy-saved')
-                showSuccessMsg('Cart saved')
-            })
-            .catch(err => {
-                console.log('Cannot add cart', err)
-                showErrorMsg('Cannot save cart')
-            })
+        dispatch({
+            type: 'REMOVE_FROM_CART',
+            cartId
+        })
     }
 }
 
-export function updateCart(cart) {
+export function addToCart(cart) {
     return (dispatch) => {
-        cartService.save(cart)
-            .then(savedCart => {
-                dispatch(getActionUpdateCart(savedCart))
-                showSuccessMsg('Cart saved')
-            })
-            .catch(err => {
-                console.log('Cannot save cart', err)
-                showErrorMsg('Cannot save cart')
-            })
+        dispatch({
+            type: 'ADD_TO_CART',
+            cart
+        })
     }
 }
+export function clearCart(cart) {
+    return (dispatch) => {
+        dispatch({
+            type: 'CLEAR_CART',
+            cart
+        })
+    }
+}
+
+
+
+
+
+// export function checkout() {
+//     return async (dispatch, getState) => {
+//         try {
+//             const state = getState()
+//             const total = state.carModule.cart.reduce((acc, car) => acc + car.price, 0)
+//             // const score = await userService.changeScore(-total)
+//             dispatch({ type: 'SET_SCORE', score })
+//             dispatch({ type: 'CLEAR_CART' })
+//             showSuccessMsg('Charged you: $' + total.toLocaleString())
+//         } catch (err) {
+//             showErrorMsg('Cannot checkout, login first')
+//             console.log('CarActions: err in checkout', err)
+//         }
+//     }
+// }

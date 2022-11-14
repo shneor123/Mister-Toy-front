@@ -16,7 +16,6 @@ export const ToyFilter = (props) => {
         props.onChangeFilter(filterBy)
     }
 
-    console.log(filterBy);
     const { name, labels, inStock, sort } = filterBy
     const allLabels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor']
 

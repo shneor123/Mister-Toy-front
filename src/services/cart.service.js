@@ -25,7 +25,8 @@ async function remove(cartId) {
 }
 
 async function save(cart) {
-    if (cart._id) {
+    const exist = cart._id
+    if (exist) {
         const savedCart = await storageService.put(STORAGE_KEY, cart)
         return savedCart
     } else {

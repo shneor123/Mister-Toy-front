@@ -1,6 +1,7 @@
 import { httpService } from './http.service'
 import { getActionRemoveReview, getActionAddReview } from '../store/actions/review.action.js'
-
+import { storageService } from './async-storage.service'
+import { userService } from './user.service'
 
 const reviewChannel = new BroadcastChannel('reviewChannel')
 
@@ -14,22 +15,23 @@ export const reviewService = {
 
 
 function query(filterBy) {
-  const queryStr = (!filterBy) ? '' : `?byUserId=${filterBy.byUserId || ''}&aboutToyId=${filterBy.aboutToyId || ''}`
-  return httpService.get(`review${queryStr}`)
-  // return storageService.query('review')
+  // const queryStr = (!filterBy) ? '' : `?byUserId=${filterBy.byUserId || ''}&aboutToyId=${filterBy.aboutToyId || ''}`
+  // return httpService.get(`review${queryStr}`)
+  return storageService.query('review')
 }
 
 async function remove(reviewId) {
-  await httpService.delete(`review/${reviewId}`)
+  // await httpService.delete(`review/${reviewId}`)
+  await storageService.remove('review', reviewId)
   reviewChannel.postMessage(getActionRemoveReview(reviewId))
 }
 
 async function add(review) {
-  const addedReview = await httpService.post('review', review)
+  // const addedReview = await httpService.post('review', review)
 
-  // review.byUser = userService.getLoggedinUser()
-  // review.aboutUser = await userService.getById(review.aboutUserId)
-  // const addedReview = await storageService.post('review', review)
+  review.byUser = userService.getLoggedinUser()
+  review.aboutUser = await userService.getById(review.aboutUserId)
+  const addedReview = await storageService.post('review', review)
 
   reviewChannel.postMessage(getActionAddReview(addedReview))
   return addedReview
@@ -42,3 +44,4 @@ function subscribe(listener) {
 function unsubscribe(listener) {
   reviewChannel.removeEventListener('message', listener)
 }
+

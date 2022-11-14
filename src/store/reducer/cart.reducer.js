@@ -1,38 +1,23 @@
 const initialState = {
-    carts: [],
-    cart: null,
-
+    cart: [],
+    cartItems: []
 }
 
 export function cartReducer(state = initialState, action) {
     var newState = state
-    var carts
+    var cart
     switch (action.type) {
-        case 'SET_CARTS':
-            carts = state.carts.map(cart => {
-                return (cart._id === action.cart._id) ? action.cart : cart
-            })
-            newState = { ...state, cart: { ...action.cart }, carts }
+        case 'ADD_TO_CART':
+            newState = { ...state, cart: [...state.cart, action.cart] }
             break
 
-        case 'REMOVE_CART':
-            const exist = state.carts.find(cart => cart._id === action.cartId)
-            if (exist.qty === 1) {
-                carts = state.carts.filter(cart => cart._id !== action.cartId)
-            } else {
-                carts = state.carts.map((cart) =>
-                    cart._id === cart._id ? { ...exist, qty: exist.qty - 1 } : cart)
-            }
-            newState = { ...state, carts, exist }
+        case 'REMOVE_FROM_CART':
+            cart = state.cart.filter(cart => cart._id !== action.cartId)
+            newState = { ...state, cart }
             break
 
-        case 'ADD_CART':
-            newState = { ...state, carts: [...state.carts, action.cart] }
-            break
-
-        case 'UPDATE_CARTS':
-            carts = state.carts.map(cart => (cart._id === action.cart._id) ? action.cart : cart)
-            newState = { ...state, carts }
+        case 'CLEAR_CART':
+            newState = { ...state, cart: [] }
             break
         default:
     }

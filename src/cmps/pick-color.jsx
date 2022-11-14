@@ -9,16 +9,15 @@ export const PickColor = ({ blockPickerColor, setBlockPickerColor }) => {
     }
     return (
         <>
-            <button onClick={onToggleModal} className="update-btn">
-                <IoIosColorFilter />
-            </button>
+            <button onClick={onToggleModal} className="update-btn"><IoIosColorFilter /></button>
             {isOpenModal && <div style={{
                 width: '0px',
                 height: '0px',
                 border: "2px solid white"
             }}>
                 <TwitterPicker color={blockPickerColor}
-                    onChange={(color) => { setBlockPickerColor(color.hex) }} />
+                    onChange={(color) => { setBlockPickerColor(color.hex) }}
+                />
             </div>
             }
         </>

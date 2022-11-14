@@ -26,7 +26,6 @@ export const ReviewsInfo = (props) => {
     // console.log(reviews)
     if (!reviews) return <></>
     if (reviews.length === 0) return <h3> Waiting for the first reviews!</h3>
-    // const { createdAt } = props.reviews
     return (
         <section className="reviews-container">
             <div className="review-inf">reviews: {reviews.length}</div>

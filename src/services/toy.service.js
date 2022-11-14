@@ -1,4 +1,6 @@
 import { httpService } from './http.service';
+import { storageService } from './async-storage.service';
+import { utilService } from './util.service';
 import axios from 'axios'
 
 export const toyService = {
@@ -60,3 +62,14 @@ function getEmptyToy() {
 // storageService.post(STORAGE_KEY,{_id: utilService.makeId(4),  name: "shneor123",
 // price: utilService.getRandomIntInclusive(1000, 9000),labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"],
 // createdAt: Date.now(),inStock: true})
+
+// // TEST DATA
+// storageService.post(TOY_BASE_ENDPOINT, {
+//     _id: utilService.makeId(4), title: "Tot Demo",
+//     isStar: false,
+//     createdAt: utilService.makeId(),
+//     style: {
+//         // backgroundColor: "#026aa7",
+//         background: 'url(https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80)',
+//     }
+// })

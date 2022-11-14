@@ -56,6 +56,8 @@ export const AppHeader = () => {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/about">About</NavLink>
                     <NavLink to="/toy">Toys</NavLink>
+                    {/* <NavLink to="/workspace">WorkSpace</NavLink> */}
+
                 </nav>
             </div>
             {pathname !== '/' && pathname !== '/about' && pathname !== '/login' && pathname !== '/signup' &&

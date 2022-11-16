@@ -13,7 +13,6 @@ import { ReviewForm } from "../cmps/reviews/review-form"
 import { addReview, loadReviews, removeReview } from '../store/actions/review.action'
 
 import imgDef from '../assets/img/default.jpg'
-import loader from '../assets/img/loader.gif'
 import { ChatApp } from "../cmps/chat-app";
 import { Loader } from "../general/loader";
 

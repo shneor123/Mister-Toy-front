@@ -2,7 +2,7 @@ import React from 'react';
 import Swal from 'sweetalert2'
 import { showSuccessMsg } from '../services/event-bus.service';
 
-export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, clearCart }) {
+export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart }) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0)
     const taxPrice = itemsPrice * 0.17
     const shippingPrice = itemsPrice > 600 ? 0 : 20
@@ -49,7 +49,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, cl
                         <div className="row" >
                             <button onClick={() =>
                                 setTimeout(() => {
-                                    clearCart()
+                                    onClearCart()
                                     onToggleCard()
                                     Swal.fire({
                                         icon: 'success',

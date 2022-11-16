@@ -17,6 +17,14 @@ export function removeFromCart(toyId) {
         })
     }
 }
+export function clearCart(toy) {
+    return (dispatch) => {
+        dispatch({
+            type: 'CLEAR_CART',
+            toy
+        })
+    }
+}
 
 export function checkout(cartItem) {
     return async (dispatch, getState) => {

@@ -11,21 +11,18 @@ import { loadToys, removeToy, setFilter } from '../store/actions/toy.actions'
 import { Button } from 'react-bootstrap'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { showSuccessMsg } from '../services/event-bus.service'
-import { addToCart, removeFromCart } from '../store/actions/cart.actions'
+import { addToCart, clearCart, removeFromCart } from '../store/actions/cart.actions'
 
 export const ToyApp = () => {
   const { toys } = useSelector((storeState) => storeState.toyModule)
   const { user } = useSelector((storeState) => storeState.userModule)
   const [characters, updateCharacters] = useState(toys)
-  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [toggleShow, setToggleShow] = useState(false)
   const [isOpenCard, setIsOpenCard] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const onToggleModal = () => {
-    setIsOpenModal(!isOpenModal)
-  }
   const onToggleCard = () => {
     setIsOpenCard(!isOpenCard)
   }
@@ -78,8 +75,8 @@ export const ToyApp = () => {
     }
   }
 
-  const clearCart = (productToRemove) => {
-    setCartItems(cartItems.filter(product => product._id === productToRemove))
+  const onClearCart = (productToRemove) => {
+    dispatch(clearCart(setCartItems(cartItems.filter(product => product._id === productToRemove))))
     showSuccessMsg('Clear all cart successfully')
   }
 
@@ -89,9 +86,10 @@ export const ToyApp = () => {
     <section className='toy-app'>
       <div>
         <p className="upper-side-menu ">
-          <button onClick={onToggleModal} className="btn-opt"><AiOutlineSearch /> Filter cards</button>
+          <button onClick={() => setToggleShow(!toggleShow)}
+            className="btn-opt"><AiOutlineSearch /> Filter cards</button>
         </p>
-        {isOpenModal && <div className='filter-open'>
+        {toggleShow && <div className='filter-open'>
           <ToyFilter onChangeFilter={onChangeFilter} />
         </div>}
         {(loggedInUser?.isAdmin) && <Link to={'/toy/edit'}><span className='add-btn'>Add New Toy</span></Link>}
@@ -114,13 +112,13 @@ export const ToyApp = () => {
           <span className='shop-icon' style={{ display: 'block' }}>{cartItems.length}</span>
         </Button>
         {isOpenCard && <div className='slide-in-right'>
-          {user.isAdmin && <button className="admin-clear-cart " onClick={clearCart}>Clear Cart</button>}
+          {user.isAdmin && <button className="admin-clear-cart " onClick={onClearCart}>Clear Cart</button>}
           <CartApp
             cartItems={cartItems}
             onAddToCart={onAddToCart}
             onRemoveCart={onRemoveCart}
             onToggleCard={onToggleCard}
-            clearCart={clearCart}
+            onClearCart={onClearCart}
           />
         </div>
         }

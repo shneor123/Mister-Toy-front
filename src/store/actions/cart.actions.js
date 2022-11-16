@@ -1,5 +1,13 @@
-import { cartService } from "../../services/cart.service";
-import { showErrorMsg } from "../../services/event-bus.service";
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
+
+export function addToCart(toy) {
+    return (dispatch) => {
+        dispatch({
+            type: 'ADD_TO_CART',
+            toy
+        })
+    }
+}
 
 export function removeFromCart(toyId) {
     return (dispatch) => {
@@ -10,32 +18,16 @@ export function removeFromCart(toyId) {
     }
 }
 
-export function addToCart(toy) {
-    return (dispatch) => {
-        cartService.save(toy)
-            .then(savedToy => {
-                dispatch({
-                    type: 'ADD_TO_CART',
-                    savedToy
-                })
-
-            })
+export function checkout(cartItem) {
+    return async (dispatch, getState) => {
+        try {
+            const state = getState()
+            const total = state.toyModule.cart.reduce((acc, car) => acc + car.price, 0)
+            dispatch({ type: 'CLEAR_CART' ,cartItem})
+            showSuccessMsg('Charged you: $' + total)
+        } catch (err) {
+            showErrorMsg('Cannot checkout, login first')
+            console.log('CarActions: err in checkout', err)
+        }
     }
 }
-export function clearCart(cart) {
-    return async (dispatch) => {
-        dispatch({
-            type: 'CLEAR_CART',
-            cart
-        })
-    }
-}
-
-// return function dispatch => {
-//     try {
-//         dispatch({ type: 'CLEAR_CART' })
-//     } catch (err) {
-//         showErrorMsg('Cannot checkout, login first')
-//         console.log('CarActions: err in checkout', err)
-//     }
-// }

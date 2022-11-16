@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { LogOut } from '../login/logout'
 import { onLogout } from '../store/actions/user.actions'
-import { BodyColor } from './body-color'
+import { BodyColor } from '../cmps/bgc-preivew'
 
 export const AppHeader = () => {
     const { toys } = useSelector((storeState) => storeState.toyModule)
     const { user } = useSelector((storeState) => storeState.userModule)
+    const [isOpenModal, setIsOpenModal] = useState(false)
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [isOpenModal, setIsOpenModal] = useState(false)
 
     const onToggleModal = () => {
         setIsOpenModal(!isOpenModal)
@@ -22,9 +22,7 @@ export const AppHeader = () => {
         dispatch(onLogout())
         navigate('/login')
     }
-    const logOutBtnStyle =
-        !user ? ({ opacity: 0, pointerEvents: 'none' }) : {}
-
+    const logOutBtnStyle = !user ? ({ opacity: 0, pointerEvents: 'none' }) : {}
     return (
         <header className='app-header'>
             <BodyColor />
@@ -55,8 +53,6 @@ export const AppHeader = () => {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/about">About</NavLink>
                     <NavLink to="/toy">Toys</NavLink>
-                    {/* <NavLink to="/workspace">WorkSpace</NavLink> */}
-
                 </nav>
             </div>
             {pathname !== '/' && pathname !== '/about' && pathname !== '/login' && pathname !== '/signup' &&
@@ -68,3 +64,20 @@ export const AppHeader = () => {
         </header>
     )
 }
+
+
+// useEffect(() => {
+//     startVideio()
+// }, [])
+
+// const video = document.getElementById('video')
+// const startVideio = () => {
+//     navigator.getUserMedia({ video: {} },
+//         stream => video.srcObject = stream,
+//         err => console.log(err))
+// }
+{/* <video
+                id="video"
+                autoPlay
+                muted>
+            </video> */}

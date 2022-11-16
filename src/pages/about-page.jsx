@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import GoogleMapReact from 'google-map-react'
-import AboutPagesss from '../cmps/auto-coplete'
+import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>
 
@@ -73,7 +73,7 @@ export const AboutPage = () => {
                     center={center}
                     defaultZoom={zoom}
                 >
-                    {branches.map(branch => <AnyReactComponent key={branch.name} title={branch.name} lat={branch.lat} lng={branch.lng} text={'🧸'} />)}
+                    {branches.map(branch => <AnyReactComponent key={branch.name} title={branch.name} lat={branch.lat} lng={branch.lng} text={<FaMapMarkerAlt style={{ fontSize: '35px', color: '#913333' }} />} />)}
                 </GoogleMapReact>
             </div>
         </main>

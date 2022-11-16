@@ -1,39 +1,45 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { AiFillWechat } from 'react-icons/ai';
 
 import { toyService } from "../services/toy.service"
+import { utilService } from "../services/util.service"
 import { userService } from "../services/user.service"
 import { showSuccessMsg } from "../services/event-bus.service"
 
-import { ToogleChat } from "../cmps/toogle-chat"
 import { ToyReview } from "../cmps/reviews/toy-review"
 import { ReviewForm } from "../cmps/reviews/review-form"
 import { addReview, loadReviews, removeReview } from '../store/actions/review.action'
 
 import imgDef from '../assets/img/default.jpg'
 import loader from '../assets/img/loader.gif'
-import { utilService } from "../services/util.service"
+import { ChatApp } from "../cmps/chat-app";
+
 
 export const ToyDetails = () => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
+    const [toggleShow, setToggleShow] = useState(false)
     const [toy, setToy] = useState(null)
     const navigate = useNavigate()
-    const params = useParams()
     const dispatch = useDispatch()
+    const { toyId } = useParams()
 
+    const onToogleShow = () => {
+        setToggleShow(!toggleShow)
+    }
     useEffect(() => {
         loadToy()
-    }, [params.toyId])
+    }, [toyId])
+
 
     const loadToy = async () => {
-        const toyId = params.toyId
         if (!toyId) return navigate('/toy')
-
         const toy = await toyService.getById(toyId)
         if (!toy) return navigate('/toy')
         setToy(toy)
     }
+
     const onRemoveReview = (reviewId) => {
         showSuccessMsg('Review removed')
         dispatch(removeReview(reviewId))
@@ -44,13 +50,8 @@ export const ToyDetails = () => {
         dispatch(loadReviews({ aboutToyId: toy._id }))
     }
 
-    const [sale, setSale] = useState({
-        isOnSale: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqrzg7Qy2OdzrNItpC4SsYx3aEVtt1SmLuA&usqp=CAU' />
-    })
-    if (!toy) return <div className="loader-container">
-        <img src={loader}></img></div>
-
-
+    const [sale, setSale] = useState({ isOnSale: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqrzg7Qy2OdzrNItpC4SsYx3aEVtt1SmLuA&usqp=CAU' /> })
+    if (!toy) return <div className="loader-container"><img src={loader}></img></div>
 
     const stockDesc = toy.inStock ? '' : 'Not '
     const color = toy.inStock ? 'green' : 'red'
@@ -75,10 +76,13 @@ export const ToyDetails = () => {
                     <p><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</p>
                 </div>
             </div>
+
             <div className="toogle__modal">
-                <ToogleChat toy={toy} />
+                <span className={`${toggleShow ? 'toggle-icon stop' : 'toggle-icon slide-in-right'}`}
+                    onClick={onToogleShow} ><AiFillWechat className='wobble-hor-bottom' />
+                </span>
+                {toggleShow && <div className='chat-container-open'><ChatApp toy={toy} onToggleModal={onToogleShow} /></div>}
             </div>
         </section>
     )
-
 }

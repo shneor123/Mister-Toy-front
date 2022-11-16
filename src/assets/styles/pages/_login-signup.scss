@@ -1,3 +1,23 @@
+.upload-preview {
+    position: relative;
+
+    label {
+        position: relative;
+        top: 30px;
+        left: -40px;
+        cursor: pointer;
+    }
+
+    img {
+        position: absolute;
+        top: 10px;
+        right: 18px;
+        height: 55px;
+        width: 90px;
+        border-radius: 5px;
+    }
+}
+
 .login-page {
     // margin-top: -20px;
     align-items: center;
@@ -26,6 +46,34 @@
         padding: 25px 40px;
         width: 400px;
         position: relative;
+
+
+        .attach {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -20%);
+            background-color: #ffffff;
+            width: 320px;
+            height: 190px;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 4px 1px;
+            padding: 6px;
+            z-index: 100;
+
+            *>input {
+                width: 90%;
+                margin-top: 50px;
+                cursor: pointer;
+            }
+
+            .inputAttach {
+                width: 90%;
+                cursor: pointer;
+
+            }
+        }
+
     }
 
     .login-header {

@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import './assets/styles/main.scss'
 
 import { ToyApp } from "./pages/toy-app";
-import { AppHeader } from "./cmps/app-header";
+import { AppHeader } from "./general/app-header";
 import { AboutPage } from "./pages/about-page";
 import { HomePage } from "./pages/home-page";
-import { UserMsg } from "./cmps/user-msg";
+import { UserMsg } from "./general/user-msg";
 import { ToyEdit } from "./cmps/toy-edit";
 import { LoginSignup } from "./login/login-signup";
 import { ToyDetails } from "./pages/toy-details";

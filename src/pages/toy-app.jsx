@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai"
 
-import { CartApp } from './cart-app'
+import { CartApp } from '../general/cart-app'
 import { Toylist } from '../cmps/toy-list'
 import { ToyFilter } from '../cmps/toy-filter'
 import { userService } from '../services/user.service'
@@ -11,7 +11,7 @@ import { loadToys, removeToy, setFilter } from '../store/actions/toy.actions'
 import { Button } from 'react-bootstrap'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { showSuccessMsg } from '../services/event-bus.service'
-import { addToCart, checkout, removeFromCart } from '../store/actions/cart.actions'
+import { addToCart, removeFromCart } from '../store/actions/cart.actions'
 
 export const ToyApp = () => {
   const { toys } = useSelector((storeState) => storeState.toyModule)
@@ -97,13 +97,14 @@ export const ToyApp = () => {
         {(loggedInUser?.isAdmin) && <Link to={'/toy/edit'}><span className='add-btn'>Add New Toy</span></Link>}
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Toylist
+        {toys && (<Toylist
           // toys={characters}
           toys={toys}
           onRemoveToy={onRemoveToy}
           onAddToCart={onAddToCart}
           onRemoveCart={onRemoveCart}
         />
+        )}
       </DragDropContext>
 
       {cartItems.length !== 0 && (<>

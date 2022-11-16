@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { utilService } from '../../services/util.service'
 import { loadUsers, removeUser } from "../../store/actions/user.actions"
 
-export const UsersInfo = () => {
+export const UsersInfo = (props) => {
     const { users } = useSelector((storeState) => storeState.userModule)
     const [selectedUser, setSelectedUser] = useState(null)
     const dispatch = useDispatch()
@@ -29,7 +29,6 @@ export const UsersInfo = () => {
                         <span>{user.isAdmin ? 'isAdmin' : ""}</span>
                         <h2>{user.fullname}</h2>
                         <p><strong>Member Since: </strong>{utilService.backendTimeStamp(user.createdAt)}</p>
-                        {/* <p><strong>Last seen{" "}{new Date(messages[messages.length - 1]?.createdAt?.toDate()).toUTCString()}</strong></p> */}
                         {!user.isAdmin &&
                             <button className='delete-btn' onClick={() => dispatch(removeUser(user._id))}>
                                 Remove -{user.username}

@@ -2,6 +2,7 @@ import { httpService } from './http.service';
 import { storageService } from './async-storage.service';
 import { utilService } from './util.service';
 import axios from 'axios'
+import { socketService, SOCKET_EVENT_ADD_NEW_TOY } from './socket.service';
 
 export const toyService = {
     query,
@@ -11,8 +12,10 @@ export const toyService = {
     getEmptyToy,
 }
 window.cs = toyService;
-const BASE_URL = (process.env.NODE_ENV == 'production') ? '/api/toy' : '//localhost:3030/api/toy'
 const TOY_BASE_ENDPOINT = 'toy'
+const STORAGE_KEY = 'toy'
+const BASE_URL = (process.env.NODE_ENV == 'production') ? '/api/toy' : '//localhost:3030/api/toy'
+
 
 async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'created', pageIdx: 0 }) {
     if (filterBy.labels.length === 7 || filterBy.labels.includes('all')) filterBy.labels = []
@@ -45,7 +48,6 @@ async function save(toy) {
         }
     }
 }
-
 
 function getEmptyToy() {
     return {

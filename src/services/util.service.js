@@ -3,9 +3,7 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     dateToString,
-    delay,
     timeSince,
-    isValidUrl,
     backendTimeStamp
 }
 
@@ -37,17 +35,8 @@ function getRandomIntInclusive(min, max) {
 }
 
 function dateToString(date, language = 'he-IL') {
-    return Intl.DateTimeFormat(language, { dateStyle: 'short', timeStyle: 'short', hour12: false }).format(new Date(date))
-}
+    return Intl.DateTimeFormat(language, { dateStyle: 'short', timeStyle: 'short', hour12: false }).format(date)
 
-// function dateToString(date) {
-//     return Intl.DateTimeFormat('en-us', { dateStyle: 'short', timeStyle: 'short', hour12: false }).format(new Date(date))
-// }
-
-function delay(ms = 1500) {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms)
-    })
 }
 
 function timeSince(date) {
@@ -81,11 +70,6 @@ function timeSince(date) {
     }
     if (Math.floor(seconds) === 0) return "Just now";
     return Math.floor(seconds) + " seconds ago";
-}
-
-function isValidUrl(txt) {
-    const urlExp = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g
-    return urlExp.test(txt)
 }
 
 function backendTimeStamp(timestamp) {

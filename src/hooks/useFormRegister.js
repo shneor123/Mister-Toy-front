@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { useEffectUpdate } from './useEffectUpdate';
 
 export const useFormRegister = (initialFields, cb) => {
@@ -6,8 +6,11 @@ export const useFormRegister = (initialFields, cb) => {
     const [fields, setFields] = useState(initialFields)
 
     const handleChange = ({ target }) => {
+        let value = target.type === 'number' ? (+target.value || '') : target.value
         const field = target.name
-        const value = target.type === 'number' ? (+target.value || '') : target.value
+        if (field === 'inStock') value = value === 'yes'
+        if (field === 'price') value = +value
+        if (field === 'labels') value = Array.from(target.selectedOptions).map(option => option.value)
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
 
@@ -15,7 +18,6 @@ export const useFormRegister = (initialFields, cb) => {
         if (cb) cb(fields)
     }, [fields])
 
-    // onChange={handleChange} type="text" id="model" name="model" value={model} 
     const register = (field, type = 'text') => {
         return {
             onChange: handleChange,
@@ -29,5 +31,4 @@ export const useFormRegister = (initialFields, cb) => {
     return [
         register
     ]
-
 }

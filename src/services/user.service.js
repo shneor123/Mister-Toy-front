@@ -1,11 +1,9 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { socketService, } from './socket.service'
-import { showSuccessMsg } from '../services/event-bus.service'
-
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-const AUTH_ENDPOINT = 'auth'
+const AUTH_ENDPOINT = `auth`
 
 export const userService = {
     login,
@@ -25,25 +23,20 @@ function getUsers() {
 }
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId)
+    const user = await httpService.get(`user/${userId}`)
     return user
 }
 
-
 async function remove(userId) {
-    // return storageService.remove('user', userId)
     const user = await httpService.delete(`user/${userId}`)
     return user
 }
 
-
-
 async function update(user) {
-    await storageService.put('user', user)
+    user = await httpService.put(`user/${user._id}`, user)
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     return user;
 }
-
 
 async function login(userCred) {
     const user = await httpService.post(`${AUTH_ENDPOINT}/login`, userCred)
@@ -59,7 +52,6 @@ async function signup(userCred) {
     return saveLocalUser(user)
 }
 
-
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     socketService.logout()
@@ -74,7 +66,6 @@ function saveLocalUser(user) {
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
-
 
 
 // ;(async ()=>{

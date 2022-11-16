@@ -7,7 +7,6 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, cl
     const taxPrice = itemsPrice * 0.17
     const shippingPrice = itemsPrice > 600 ? 0 : 20
     const totalPrice = itemsPrice + taxPrice + shippingPrice
-    const totalCopon = itemsPrice + taxPrice + shippingPrice - shippingPrice
 
     return (
         <aside className="block col-1">
@@ -58,7 +57,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, cl
                                         showConfirmButton: false,
                                         timer: 1500,
                                     })
-                                    { showSuccessMsg('Charged you: $' + totalCopon.toLocaleString()) }
+                                    { showSuccessMsg('Charged you: $' + totalPrice.toLocaleString()) }
                                 }, 1000)
                             }> Checkout </button>
                         </div>

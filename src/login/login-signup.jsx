@@ -3,18 +3,19 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
 import { Link, useLocation } from "react-router-dom"
 
-import { login, signup } from "../store/actions/user.actions"
+import { login, onSignup } from "../store/actions/user.actions"
 
 import leftHero from "../assets/svg/leftHero.svg"
 import rightHero from "../assets/svg/rightHero.svg"
 import { useForm } from "../hooks/useForm"
+import { ImgUploader } from "../general/img-uploader"
 
 export const LoginSignup = () => {
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
+  const [toggleShow, setToggleShow] = useState(false)
   const [isSignup, setIsSignup] = useState(false)
   const [credentials, handleChange, setCredentials] = useForm({
     username: "",
@@ -40,7 +41,7 @@ export const LoginSignup = () => {
     if (ev) ev.preventDefault()
     if (!credentials.username || !credentials.password || !credentials.fullname)
       return
-    dispatch(signup(credentials))
+    dispatch(onSignup(credentials))
     navigate("/login")
     clearState()
   }
@@ -78,15 +79,26 @@ export const LoginSignup = () => {
                 value={credentials.fullname}
                 onChange={handleChange}
               />
-              <input
-                type="text"
-                id="fullname"
-                name="imgUrl"
-                placeholder="Enter link img profile"
-                value={credentials.imgUrl}
-                onChange={handleChange}
-              />
-              {/* <ImgUploader onUploaded={onUploaded} /> */}
+              <div>
+                <p className="upper-side-menu ">
+                  {<button className="btn-opt"
+                    onClick={() => setToggleShow(!toggleShow)} >
+                    {toggleShow ? 'Hide details' : 'Attach'}
+                  </button>}
+                </p>
+                {toggleShow && <div className='attach'>
+                  <ImgUploader onUploaded={onUploaded} />
+                  <input
+                    className="inputAttach"
+                    type="text"
+                    id="fullname"
+                    name="imgUrl"
+                    placeholder="Enter link img profile"
+                    value={credentials.imgUrl}
+                    onChange={handleChange}
+                  />
+                </div>}
+              </div>
             </>
           ) : (
             <h1>Login to Store</h1>

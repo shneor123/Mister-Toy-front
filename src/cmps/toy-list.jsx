@@ -16,7 +16,6 @@ export function Toylist({ toys, onRemoveToy, onAddToCart, onRemoveCart }) {
                             <ToyPreview
                                 key={toy._id}
                                 toy={toy}
-                                toyId={toy._id}
                                 index={index}
                                 onRemoveToy={onRemoveToy}
                                 onAddToCart={onAddToCart}

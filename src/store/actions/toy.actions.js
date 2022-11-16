@@ -67,7 +67,7 @@ export function addToy(toy) {
             .then(savedToy => {
                 dispatch(getActionAddToy(savedToy))
                 socketService.emit('toy-saved')
-                showSuccessMsg('Toy saved')
+                showSuccessMsg('Toy addd')
             })
             .catch(err => {
                 console.log('Cannot add toy', err)

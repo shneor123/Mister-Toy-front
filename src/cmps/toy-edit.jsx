@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { toyService } from '../services/toy.service'
 import { useForm } from '../hooks/useForm'
-import loader from '../assets/img/loader.gif'
+import { Loader } from '../general/loader'
 
 export const ToyEdit = () => {
 
@@ -44,7 +44,7 @@ export const ToyEdit = () => {
     }
 
 
-    if (!toy) return <img src={loader}></img>
+    if (!toy) return <Loader />
     const allLabels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor']
 
     const { name, price, src, inStock, author } = toy

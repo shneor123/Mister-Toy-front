@@ -18,12 +18,9 @@
 @import "pages/toy-details";
 @import "pages/user-info";
 @import "pages/review-info";
-@import "pages/work-space";
 
 
 // Cmps
-@import "cmps/app-header";
-@import "cmps/user-msg";
 @import "cmps/toy-list";
 @import "cmps/toy-preivew";
 @import "cmps/toy-edit";
@@ -31,15 +28,25 @@
 @import "cmps/star-rate";
 @import "cmps/toy-filter";
 @import "cmps/chat-app-toogle";
-@import "cmps/app-header";
-@import "cmps/app-footer";
 @import "cmps/task-activity";
 
 @import "cmps/main-manu";
-@import "cmps/cart";
 
 // CMPS-BOARD
+@import "pages/work-space";
 @import "cmps/board/dynamic-modal-cmp";
 @import "cmps/board/new-board";
 @import "cmps/board/board-list";
 @import "cmps/board/board-preview";
+
+
+// GENERAL
+@import "general/cart";
+@import "general/loader";
+@import "general/app-header";
+@import "general/app-footer";
+@import "general/user-msg";
+
+
+
+

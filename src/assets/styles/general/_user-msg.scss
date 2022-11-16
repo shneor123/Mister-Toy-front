@@ -1,0 +1,44 @@
+.user-msg {
+    z-index: 1000;
+    border: 1px solid black;
+    width: 200px;
+    box-shadow: 5px 5px 6px -3px rgb(0 0 0 / 36%);
+    height: 50px;
+    font-size: 1em;
+    position: fixed;
+    left: 1rem;
+    bottom: -80px;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2em 1em;
+
+    & button {
+        cursor: pointer;
+        width: 1.4em;
+        background-position: center;
+        background-size: 1.4em;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        height: 1.4em;
+        border: none;
+        background-color: transparent;
+
+    }
+
+    &.danger {
+        background-color: #d24858;
+        border: #d23d4f;
+        color: #fff;
+    }
+
+    &.success {
+        border: #4cc943;
+        background-color: #5ccc54;
+    }
+
+    & button:hover {
+        background-color: #282c3439;
+    }
+}

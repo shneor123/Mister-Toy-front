@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai"
+import { Loader } from "../general/loader"
 
 import { CartApp } from '../general/cart-app'
 import { Toylist } from '../cmps/toy-list'
@@ -81,7 +82,7 @@ export const ToyApp = () => {
   }
 
   const loggedInUser = userService.getLoggedinUser()
-  if (!toys) return <>Loading...</>
+  if (!toys) return <Loader/>
   return (
     <section className='toy-app'>
       <div>

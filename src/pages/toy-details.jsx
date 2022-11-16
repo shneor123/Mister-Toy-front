@@ -15,6 +15,7 @@ import { addReview, loadReviews, removeReview } from '../store/actions/review.ac
 import imgDef from '../assets/img/default.jpg'
 import loader from '../assets/img/loader.gif'
 import { ChatApp } from "../cmps/chat-app";
+import { Loader } from "../general/loader";
 
 
 export const ToyDetails = () => {
@@ -51,7 +52,7 @@ export const ToyDetails = () => {
     }
 
     const [sale, setSale] = useState({ isOnSale: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqrzg7Qy2OdzrNItpC4SsYx3aEVtt1SmLuA&usqp=CAU' /> })
-    if (!toy) return <div className="loader-container"><img src={loader}></img></div>
+    if (!toy) return <Loader/>
 
     const stockDesc = toy.inStock ? '' : 'Not '
     const color = toy.inStock ? 'green' : 'red'

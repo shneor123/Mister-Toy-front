@@ -1,14 +1,23 @@
-.-home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #282c34;
-    color: #fff;
-    border: 1px solid green;
-    clear: both;
-    position: absolute;
+.app-footer {
+    background-color: $clr1;
+    border-top: 4px solid $clr4 ;
+    border-bottom: 3px solid $clr4 ;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: $clr4;
+    margin: 1px;
+    text-align: center;
 
-    bottom: 0px;
-    width: 100%;
-    
+    .btn-link {
+        border: 0;
+        background-color: transparent;
+        color: red;
+        text-decoration: underline;
+        transition: .5s;
+
+        &:hover {
+            background-color: blue;
+            transform: scale(1.1);
+        }
+    }
 }

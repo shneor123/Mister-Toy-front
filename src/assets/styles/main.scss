@@ -46,18 +46,4 @@
 @import "general/app-header";
 @import "general/app-footer";
 @import "general/user-msg";
-
-
-
-
-// .score{
-//     color: black;
-// }
-
-.score {
-    margin-left: 250px;
-    background-color: $clr2;
-    color: $clr6;
-    padding: 8px;
-    border-radius: 50%;
-}
+@import "general/img-uploader";

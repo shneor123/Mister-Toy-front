@@ -21,11 +21,17 @@ export class ImgUploader extends Component {
     const { imgUrl } = this.state
 
     return (
-      <div className="upload-preview"  >
+      <div className='upload-pc-container flex align-center'>
         {imgUrl && <img src={imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
-        <label htmlFor="imgUpload">{this.uploadMsg}</label>
-        <input type="file" onChange={this.uploadImg} accept="img/*" id="imgUpload" />
+        <label htmlFor="upload-file-pc">{this.uploadMsg}</label>
+        <input type="file" onChange={this.uploadImg} accept="img/*" id="upload-file-pc" />
       </div>
     )
   }
 }
+
+{/* <div className="upload-preview"  >
+{imgUrl && <img src={imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
+<label htmlFor="imgUpload">{this.uploadMsg}</label>
+<input type="file" onChange={this.uploadImg} accept="img/*" id="imgUpload" />
+</div> */}

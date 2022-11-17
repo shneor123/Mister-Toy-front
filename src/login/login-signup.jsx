@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
 import { Link, useLocation } from "react-router-dom"
+import { FiPaperclip } from "react-icons/fi";
 
+import { useForm } from "../hooks/useForm"
+import { ImgUploader } from "../general/img-uploader"
 import { login, onSignup } from "../store/actions/user.actions"
 
 import leftHero from "../assets/svg/leftHero.svg"
 import rightHero from "../assets/svg/rightHero.svg"
-import { useForm } from "../hooks/useForm"
-import { ImgUploader } from "../general/img-uploader"
 
 export const LoginSignup = () => {
   const dispatch = useDispatch()
@@ -80,24 +81,26 @@ export const LoginSignup = () => {
                 onChange={handleChange}
               />
               <div>
-                <p className="upper-side-menu ">
-                  {<button className="btn-opt"
+                <p className="upper-login-attach ">
+                  {<button className="btn-opt-login"
                     onClick={() => setToggleShow(!toggleShow)} >
+                    <span className="badge"><FiPaperclip /></span>
                     {toggleShow ? 'Hide details' : 'Attach'}
                   </button>}
                 </p>
                 {toggleShow && <div className='attach'>
                   <ImgUploader onUploaded={onUploaded} />
+                  <label className="label_login" htmlFor='upload-file-url'>Attach a link</label>
                   <input
                     className="inputAttach"
                     type="text"
-                    id="fullname"
+                    id="upload-file-url"
                     name="imgUrl"
                     placeholder="Enter link img profile"
                     value={credentials.imgUrl}
-                    onChange={handleChange}
-                  />
-                </div>}
+                    onChange={handleChange} />
+                </div>
+                }
               </div>
             </>
           ) : (

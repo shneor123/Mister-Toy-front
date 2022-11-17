@@ -15,8 +15,8 @@ export const userService = {
     getById,
     remove,
     update,
+    changeScore
 }
-
 
 function getUsers() {
     return httpService.get(`user`)
@@ -67,6 +67,13 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+async function changeScore(by) {
+    const user = getLoggedinUser()
+    if (!user) throw new Error('Not loggedin')
+    user.score = user.score + by || by
+    await update(user)
+    return user.score
+}
 
 // ;(async ()=>{
 //     await userService.login({fullname: 'Puki Norma', username: 'user1', password:'123',score: 10000, isAdmin: false})

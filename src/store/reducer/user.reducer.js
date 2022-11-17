@@ -1,10 +1,7 @@
-import { userService } from "../../services/user.service";
-
 let initialState = {}
 
 initialState = {
     users: [],
-    // user: userService.getLoggedinUser(),
     user:null,
     watchedUser: null
 }

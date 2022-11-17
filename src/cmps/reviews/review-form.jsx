@@ -1,16 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { StarsRate } from "./stars-rate"
-import { utilService } from "../../services/util.service"
 
 export const ReviewForm = ({ onAddReview }) => {
-
+    const focusRef = React.createRef()
     const [state, setState] = useState({
         rate: 4,
         content: '',
     })
-
-    const focusRef = React.createRef()
 
     const handleChange = ev => {
         const { name, value } = ev.target

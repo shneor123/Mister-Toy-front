@@ -4,7 +4,6 @@ export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
     if (!reviews) return <></>
     if (reviews.length === 0) return <h3>Weite first review!</h3>
 
-    const createdAt = Date.now()
     const getStarsStr = (count) => {
         const str = count === 0 ?
             '-no rate specified-' : String.fromCharCode(9733).repeat(count)
@@ -12,8 +11,8 @@ export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
     }
     return (
         <div className="toy-reviews">
-            {reviews.map(review =>
-                <div key={review._id} className="toy-review" >
+            {reviews.map((review,idx) =>
+                <div key={idx} className="toy-review" >
                     <div>
                         <strong>Rate:{" "}</strong>
                         {getStarsStr(review.rate)}

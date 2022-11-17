@@ -41,17 +41,18 @@ export const ToyDetails = () => {
     }
 
     const onRemoveReview = (reviewId) => {
-        showSuccessMsg('Review removed')
         dispatch(removeReview(reviewId))
+        showSuccessMsg('Review removed')
     }
 
     const onAddReview = async ({ rate, content }) => {
         dispatch(addReview({ rate, content, aboutToyId: toy._id }))
         dispatch(loadReviews({ aboutToyId: toy._id }))
+        showSuccessMsg('Review added')
     }
 
     const [sale, setSale] = useState({ isOnSale: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqrzg7Qy2OdzrNItpC4SsYx3aEVtt1SmLuA&usqp=CAU' /> })
-    if (!toy) return <Loader/>
+    if (!toy) return <Loader />
 
     const stockDesc = toy.inStock ? '' : 'Not '
     const color = toy.inStock ? 'green' : 'red'

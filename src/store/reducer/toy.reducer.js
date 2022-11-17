@@ -1,6 +1,6 @@
 const initialState = {
     toys: [],
-    cart: [],
+    cart:[],
     filterBy: {
         name: '',
         inStock: '',
@@ -39,13 +39,9 @@ export function toyReducer(state = initialState, action) {
             break
 
         case 'REMOVE_FROM_CART':
-            // cart = state.cart.filter(toy => toy._id !== action.toyId)
-            // newState = { ...state, cart }
-            const lastRemovedCart = state.cart.find(toy => toy === action.toyId)
-            cart = state.cart.filter(toy => toy !== action.toyId)
-            newState = { ...state, cart, lastRemovedCart }
+            cart = state.cart.filter(toy => toy._id !== action.toyId)
+            newState = { ...state, cart }
             break
-
 
         case 'CLEAR_CART':
             newState = { ...state, cart: [] }
@@ -53,6 +49,8 @@ export function toyReducer(state = initialState, action) {
 
         case 'SET_FILTERBY':
             newState = { ...state, filterBy: { ...action.filterBy } }
+            break
+
         default:
     }
 

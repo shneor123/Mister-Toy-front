@@ -4,12 +4,9 @@ import { IoIosColorFilter } from 'react-icons/io'
 
 export const PickColor = ({ blockPickerColor, setBlockPickerColor }) => {
     const [isOpenModal, setIsOpenModal] = useState(false)
-    const onToggleModal = () => {
-        setIsOpenModal(!isOpenModal)
-    }
     return (
         <>
-            <button onClick={onToggleModal} className="update-btn"><IoIosColorFilter /></button>
+            <button onClick={() => setIsOpenModal(!isOpenModal)} className="update-btn"><IoIosColorFilter /></button>
             {isOpenModal && <div style={{
                 width: '0px',
                 height: '0px',

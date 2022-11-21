@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
 import { loadUsers, removeUser } from "../../store/actions/user.actions"
 
-export const UsersInfo = (props) => {
+export const UsersInfo = () => {
     const { users } = useSelector((storeState) => storeState.userModule)
     const [selectedUser, setSelectedUser] = useState(null)
     const dispatch = useDispatch()
@@ -22,10 +23,11 @@ export const UsersInfo = (props) => {
                 {users.map((user) =>
                     <div onClick={() => setSelectedUser(user)} key={user._id}
                         className={`user-preview ${selectedUser?._id === user._id ? 'selected' : ''}`}>
-
-                        <div className="user-img-container">
-                            <img src={user?.imgUrl} />
-                        </div>
+                        <Link to={`user/${user._id}`}>
+                            <div className="user-img-container">
+                                <img src={user?.imgUrl} />
+                            </div>
+                        </Link>
                         <span>{user.isAdmin ? 'isAdmin' : ""}</span>
                         <h2>{user.fullname}</h2>
                         <p><strong>Member Since: </strong>{utilService.backendTimeStamp(user.createdAt)}</p>
@@ -37,7 +39,7 @@ export const UsersInfo = (props) => {
 
                     </div>)}
             </div>
-            
+
         </section >
     )
 }

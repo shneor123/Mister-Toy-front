@@ -8,13 +8,18 @@
         background-color: $clr4;
         color: #fff;
         padding: 5px;
+        right: 40%;
+        top: 0;
         position: absolute;
-        top: 0em;
-        left: 50%;
         border-top: 1px solid #fff;
         padding: 10px 20px 10px 20px;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
+
+        @include for-mobile-layout {
+            position: absolute;
+            right: 2px;
+        }
 
         &:hover {
             color: $clr2;

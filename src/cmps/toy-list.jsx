@@ -2,7 +2,7 @@ import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import { ToyPreview } from './toy-preview'
 
-export function Toylist({ toys, onRemoveToy, onAddToCart, onRemoveCart }) {
+export function Toylist({ toys, onRemoveToy, cartItems,onAddToCart, onRemoveCart }) {
     return (
         <Droppable droppableId="toys-list-container">
             {(provided) => (
@@ -18,6 +18,7 @@ export function Toylist({ toys, onRemoveToy, onAddToCart, onRemoveCart }) {
                                 toy={toy}
                                 index={index}
                                 onRemoveToy={onRemoveToy}
+                                cartItems={cartItems}
                                 onAddToCart={onAddToCart}
                                 onRemoveCart={onRemoveCart}
                             />

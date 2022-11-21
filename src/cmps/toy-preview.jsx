@@ -9,13 +9,10 @@ import trash from "../assets/img/trash.png"
 import edit from "../assets/img/edit.png"
 import details from "../assets/img/details.png"
 import imgDef from '../assets/img/default.jpg'
+import imgSale from '../assets/img/sale-2.png'
 import { Draggable } from 'react-beautiful-dnd';
 
-export const ToyPreview = ({ toy, onRemoveToy, onAddToCart, toyId, index }) => {
-    const [sale, setSale] = useState({
-        isOnSale: <img className='sale-img-preview' src='https://static5.depositphotos.com/1039762/473/i/600/depositphotos_4735393-stock-photo-red-sale-tag.jpg' />
-    })
-
+export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveCart, index }) => {
     const [blockPickerColor, setBlockPickerColor] = useState('#ece9e9')
     const loggedInUser = userService.getLoggedinUser()
     const { createdAt } = toy
@@ -28,25 +25,35 @@ export const ToyPreview = ({ toy, onRemoveToy, onAddToCart, toyId, index }) => {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                     >
-                        <article className="toy-container" style={{ backgroundColor: blockPickerColor }}>
-                            <h3>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h3>
+
+                        <article className="toy-container" style={{ background: blockPickerColor }}>
+                            <h1>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h1>
                             <h4>${toy.price}</h4>
-                            <p className='sale'>{toy.price < 60 ? sale.isOnSale : ""}</p>
+                            <img className='sale_preivew' src={toy.price < 60 ? imgSale : ""} alt="" />
                             <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
                             <div className="img-container"><img src={toy.src || imgDef} /></div>
-                            <span style={{ cursor: 'pointer' }} onClick={() => onAddToCart(toy)}> + Add To Cart</span>
 
-                            <div className="btns-container">
+                            {cartItems <= 0 ? (
+                                <span className='sp_add_cart flip-in-hor-bottom' onClick={() => onAddToCart(toy)}> + Add To Cart</span>
+                            ) : (
+                                <div className='add_lass_inCart flip-in-hor-bottom'>
+                                    <span className='sp_cart_pre' onClick={() => onAddToCart(toy)}> + </span>
+                                    {/* <span className='cart_leng'>{cartItems.length} In Cart</span> */}
+                                    <span className='sp_cart_pre' onClick={() => onRemoveCart(toy)}> - </span>
+                                </div>
+                            )}
+                            <section className="btns-container">
                                 {(loggedInUser?.isAdmin) && <>
                                     <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />
                                     <button className="delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
-                                    <Link to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
-                                    <Link to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
+                                    <Link className='link_btns' to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
+                                    <Link className='link_btns' to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
                                 </>}
                                 <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
                                     <button><img src={details} /></button></Link>}</div>
-                            </div>
+                            </section>
                         </article >
+
                     </div>
                 )}
             </Draggable>

@@ -29,9 +29,3 @@ export class ImgUploader extends Component {
     )
   }
 }
-
-{/* <div className="upload-preview"  >
-{imgUrl && <img src={imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
-<label htmlFor="imgUpload">{this.uploadMsg}</label>
-<input type="file" onChange={this.uploadImg} accept="img/*" id="imgUpload" />
-</div> */}

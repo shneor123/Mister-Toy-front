@@ -34,23 +34,9 @@ export function toyReducer(state = initialState, action) {
             newState = { ...state, toys }
             break
 
-        case 'ADD_TO_CART':
-            newState = { ...state, cart: [...state.cart, action.toy] }
-            break
-
-        case 'REMOVE_FROM_CART':
-            cart = state.cart.filter(toy => toy._id !== action.toyId)
-            newState = { ...state, cart }
-            break
-
-        case 'CLEAR_CART':
-            newState = { ...state, cart: [] }
-            break
-
         case 'SET_FILTERBY':
             newState = { ...state, filterBy: { ...action.filterBy } }
             break
-
         default:
     }
 

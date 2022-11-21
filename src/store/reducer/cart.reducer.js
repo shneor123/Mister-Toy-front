@@ -12,7 +12,7 @@ export function cartReducer(state = initialState, action) {
             break
             
         case 'REMOVE_FROM_CART':
-            cart = state.cart.filter(cart => cart._id !== action.cartId)
+            cart = state.cart.filter(cart => cart !== action.cartId)
             newState = { ...state, cart }
             break
 

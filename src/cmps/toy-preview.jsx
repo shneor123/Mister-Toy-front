@@ -27,10 +27,12 @@ export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveC
                     >
 
                         <article className="toy-container" style={{ background: blockPickerColor }}>
-                            <h1>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h1>
-                            <h4>${toy.price}</h4>
-                            <img className='sale_preivew' src={toy.price < 60 ? imgSale : ""} alt="" />
-                            <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
+                            <Link className='links_a' to={`/toy/details/${toy._id}`}>
+                                <h1>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h1>
+                                <h4>${toy.price}</h4>
+                                <p><strong>created:</strong>{utilService.dateToString(createdAt)}</p>
+                                <img className='sale_preivew' src={toy.price < 60 ? imgSale : ""} alt="" />
+                            </Link>
                             <div className="img-container"><img src={toy.src || imgDef} /></div>
 
                             {cartItems <= 0 ? (
@@ -38,14 +40,15 @@ export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveC
                             ) : (
                                 <div className='add_lass_inCart flip-in-hor-bottom'>
                                     <span className='sp_cart_pre' onClick={() => onAddToCart(toy)}> + </span>
-                                    {/* <span className='cart_leng'>{cartItems.length} In Cart</span> */}
+                                    {/* <span className='cart_leng'>{cartItems.qty} In Cart</span> */}
+                                    {/* {cartItems.map((item, idx) => (<div key={idx} className="row"><div className="col-2 text-right"> {item.qty}</div></div>))} */}
                                     <span className='sp_cart_pre' onClick={() => onRemoveCart(toy)}> - </span>
                                 </div>
                             )}
                             <section className="btns-container">
                                 {(loggedInUser?.isAdmin) && <>
                                     <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />
-                                    <button className="delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
+                                    <button className="link_btns delete-btn" onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
                                     <Link className='link_btns' to={`/toy/edit/${toy._id}`}><button className="update-btn"><img src={edit}></img></button></Link>
                                     <Link className='link_btns' to={`/toy/details/${toy._id}`}><button><img src={details}></img></button></Link>
                                 </>}

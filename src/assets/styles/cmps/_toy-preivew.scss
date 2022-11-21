@@ -95,11 +95,12 @@
         }
     }
 
+
     .btns-container {
         display: flex;
         margin-left: 5px;
         margin-top: 5px;
-        visibility: hidden;
+        // visibility: hidden;
 
         @include for-mobile-layout {
             visibility: unset;
@@ -109,29 +110,30 @@
             width: 18px;
             height: 18px;
         }
-    }
 
-    &:hover .btns-container {
-        visibility: unset;
-    }
+        &:hover .btns-container {
+            visibility: unset;
+        }
 
-    button,
-    a {
-        width: 28px;
-        height: 28px;
-        margin: 0 3px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: $clr4;
-        background-color: $clr1;
-        cursor: pointer;
-
-        &:hover {
+        button,
+        a {
+            width: 28px;
+            height: 28px;
+            margin: 0 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
             color: $clr4;
-            background-color: $clr2;
-            border: 1px solid rgb(154, 153, 153);
+            background-color: $clr1;
+            cursor: pointer;
+
+            &:hover {
+                color: $clr4;
+                background-color: $clr2;
+                border: 1px solid rgb(154, 153, 153);
+            }
         }
     }
+
 }

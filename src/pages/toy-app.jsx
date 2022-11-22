@@ -79,6 +79,7 @@ export const ToyApp = () => {
     setIsOpenCard(!isOpenCard)
   }
 
+
   const loggedInUser = userService.getLoggedinUser()
   if (!toys) return <Loader />
   return (
@@ -97,9 +98,9 @@ export const ToyApp = () => {
             // toys={characters}
             toys={toys}
             onRemoveToy={onRemoveToy}
+            cartItems={cartItems}
             onAddToCart={onAddToCart}
             onRemoveCart={onRemoveCart}
-            cartItems={cartItems}
           />
           }
           {cartItems.length !== 0 && (<>

@@ -48,13 +48,23 @@
         cursor: pointer;
 
         &.add {
-            background-color: #40c0f0;
+            background-color: #2b92b7;
             width: 1.5rem;
+
+            &:hover {
+                background: linear-gradient(to bottom, #476e9e 5%, #1da8e3 100%);
+            }
+
         }
 
         &.remove {
-            background-color: #f04040;
             width: 1.5rem;
+            background-color: #fd0d5d;
+
+            &:hover {
+                background: linear-gradient(to bottom, #476e9e 5%, #8b2735 100%);
+            }
+
         }
     }
 

@@ -9,9 +9,10 @@ export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
             '-no rate specified-' : String.fromCharCode(9733).repeat(count)
         return str
     }
+
     return (
         <div className="toy-reviews">
-            {reviews.map((review,idx) =>
+            {reviews.map((review, idx) =>
                 <div key={idx} className="toy-review" >
                     <div>
                         <strong>Rate:{" "}</strong>
@@ -22,7 +23,7 @@ export function ToyReview({ reviews, loggedInUser, onRemoveReview }) {
                         {review.byUser.username}
                     </div>
                     <p className="content">
-                        <strong>Content:{" "}</strong>
+                        <strong>img:{" "}</strong>
                         {review.content}
                     </p>
                     {(!loggedInUser?.isAdmin || loggedInUser?._id === review.byUser._id)

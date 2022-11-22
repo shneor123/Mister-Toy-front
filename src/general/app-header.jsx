@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { LogOut } from '../login/logout'
@@ -51,8 +51,10 @@ export const AppHeader = () => {
                 </div>
                 <nav className='nav-links '>
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="/about">About</NavLink>
                     <NavLink to="/toy">Toys</NavLink>
+                    <NavLink to="/favorites">Favorites</NavLink>
+                    <NavLink to="/about">About</NavLink>
+                    {/* <NavLink to="/forecast">Forecast</NavLink> */}
                 </nav>
             </div>
             {pathname !== '/' && pathname !== '/about' && pathname !== '/login' && pathname !== '/signup' &&
@@ -64,20 +66,3 @@ export const AppHeader = () => {
         </header>
     )
 }
-
-
-// useEffect(() => {
-//     startVideio()
-// }, [])
-
-// const video = document.getElementById('video')
-// const startVideio = () => {
-//     navigator.getUserMedia({ video: {} },
-//         stream => video.srcObject = stream,
-//         err => console.log(err))
-// }
-{/* <video
-                id="video"
-                autoPlay
-                muted>
-            </video> */}

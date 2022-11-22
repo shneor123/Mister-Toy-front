@@ -81,6 +81,10 @@
                 background: none;
                 color: $clr4;
                 display: none;
+
+                @include for-mobile-layout {
+                    display: block;
+                }
             }
 
             .since-review {
@@ -90,7 +94,6 @@
                 color: $clr4;
                 display: none;
                 font-size: 10px;
-
             }
 
             &:hover .since-review {

@@ -8,13 +8,14 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
     const shippingPrice = itemsPrice > 600 ? 0 : 20
     const totalPrice = itemsPrice + taxPrice + shippingPrice
 
+
     return (
         <aside className="block col-1">
             <header style={{ marginTop: '30px' }} className="row"><h1>Small Shopping Cart</h1></header>
             <h2>Cart Items</h2>
             <div>
                 {cartItems.length === 0 && <div>Cart is empty</div>}
-                {cartItems.map((item, idx) => (
+                {cartItems && cartItems.map((item, idx) => (
                     <div key={idx} className="row">
                         <img src={item.src} alt={item.name} />
                         <div className="col-name col-2">{item.name}</div>
@@ -28,6 +29,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                 {cartItems.length !== 0 && (
                     <>
                         <hr></hr>
+                        {/* shopping in 3 bisness day<input type="checkbox" /> */}
                         <div className="row">
                             <div className="col-2">Items Price</div>
                             <div className="col-1 text-right">${itemsPrice.toFixed(2)}</div>

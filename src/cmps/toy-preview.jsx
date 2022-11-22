@@ -16,6 +16,7 @@ export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveC
     const [blockPickerColor, setBlockPickerColor] = useState('#ece9e9')
     const loggedInUser = userService.getLoggedinUser()
     const { createdAt } = toy
+
     return (
         <div>
             <Draggable draggableId={toy._id} index={index}>
@@ -34,16 +35,14 @@ export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveC
                                 <img className='sale_preivew' src={toy.price < 60 ? imgSale : ""} alt="" />
                             </Link>
                             <div className="img-container"><img src={toy.src || imgDef} /></div>
-
                             {cartItems <= 0 ? (
                                 <span className='sp_add_cart flip-in-hor-bottom' onClick={() => onAddToCart(toy)}> + Add To Cart</span>
-                            ) : (
-                                <div className='add_lass_inCart flip-in-hor-bottom'>
-                                    <span className='sp_cart_pre' onClick={() => onAddToCart(toy)}> + </span>
-                                    {/* <span className='cart_leng'>{cartItems.qty} In Cart</span> */}
-                                    {/* {cartItems.map((item, idx) => (<div key={idx} className="row"><div className="col-2 text-right"> {item.qty}</div></div>))} */}
-                                    <span className='sp_cart_pre' onClick={() => onRemoveCart(toy)}> - </span>
-                                </div>
+                                ) : (
+                                <span className='sp_add_cart flip-in-hor-bottom' onClick={() => onAddToCart(toy)}> + Add To Cart</span>
+                                // <div className='add_lass_inCart flip-in-hor-bottom'>
+                                //     <span className='sp_cart_pre' onClick={() => onAddToCart(toy)}> + </span>
+                                //     <span className='sp_cart_pre' onClick={() => onRemoveCart(toy)}> - </span>
+                                // </div>
                             )}
                             <section className="btns-container">
                                 {(loggedInUser?.isAdmin) && <>

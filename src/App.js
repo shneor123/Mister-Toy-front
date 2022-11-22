@@ -14,7 +14,6 @@ import { Dashboard } from "./pages/toy-dashboard";
 import { ReviewsInfo } from "./pages/info/reviews-Info";
 import { UsersInfo } from "./pages/info/user-info";
 
-
 function App() {
   return (
     <Router>

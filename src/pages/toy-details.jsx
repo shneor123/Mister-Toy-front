@@ -68,8 +68,8 @@ export const ToyDetails = () => {
                         <p><strong>Author: </strong>{toy.author}</p>
                         <img className="img_details" src={toy.price < 60 ? imgSale : ""} alt="" />
                         <h5 style={{ color }}>{stockDesc}in stock</h5>
-                        {/* <p className="labels"><strong>Labels: </strong>{labels.length > 30 ? labels.substring(0, 25) + '...' : labels}</p> */}
-                        <p><strong>Labels: </strong>{labels}</p>
+                        <p className="labels"><strong>Labels: </strong>{labels.length > 30 ? labels.substring(0, 25) + '...' : labels}</p>
+                        {/* <p><strong>Labels: </strong>{labels}</p> */}
                         <img src={toy.src || imgDef}></img>
                         <span><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</span>
                     </div>

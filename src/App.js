@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import './assets/styles/main.scss'
 
 import { ToyApp } from "./pages/toy-app";
 import { AppHeader } from "./general/app-header";
@@ -13,6 +12,7 @@ import { ToyDetails } from "./pages/toy-details";
 import { Dashboard } from "./pages/toy-dashboard";
 import { ReviewsInfo } from "./pages/info/reviews-Info";
 import { UsersInfo } from "./pages/info/user-info";
+
 
 function App() {
   return (

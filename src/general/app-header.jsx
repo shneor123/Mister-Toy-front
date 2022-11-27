@@ -51,10 +51,8 @@ export const AppHeader = () => {
                 </div>
                 <nav className='nav-links '>
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="/toy">Toys</NavLink>
-                    <NavLink to="/favorites">Favorites</NavLink>
                     <NavLink to="/about">About</NavLink>
-                    {/* <NavLink to="/forecast">Forecast</NavLink> */}
+                    <NavLink to="/toy">Toys</NavLink>
                 </nav>
             </div>
             {pathname !== '/' && pathname !== '/about' && pathname !== '/login' && pathname !== '/signup' &&

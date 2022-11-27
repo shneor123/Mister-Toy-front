@@ -67,78 +67,80 @@ export const LoginSignup = () => {
         <h1>My Store</h1>{" "}
       </header>
       <div className="login-signup-container">
-        <form className="flex column " onSubmit={isSignup ? signUp : onLogin}>
-          {isSignup ? (
-            <>
-              {" "}
-              <h1>Sign up for your account</h1>
-              <input
-                type="text"
-                id="fullname"
-                name="fullname"
-                placeholder="Enter full name"
-                value={credentials.fullname}
-                onChange={handleChange}
-              />
-              <div>
-                <p className="upper-login-attach ">
-                  {<button className="btn-opt-login"
-                    onClick={() => setToggleShow(!toggleShow)} >
-                    <span className="badge"><FiPaperclip /></span>
-                    {toggleShow ? 'Hide details' : 'Attach'}
-                  </button>}
-                </p>
-                {toggleShow && <div className='attach'>
-                  <ImgUploader onUploaded={onUploaded} />
-                  <label className="label_login" htmlFor='upload-file-url'>Attach a link</label>
-                  <input
-                    className="inputAttach"
-                    type="text"
-                    id="upload-file-url"
-                    name="imgUrl"
-                    placeholder="Enter link img profile"
-                    value={credentials.imgUrl}
-                    onChange={handleChange} />
+        <div className="form">
+          <form className="flex column " onSubmit={isSignup ? signUp : onLogin}>
+            {isSignup ? (
+              <>
+                {" "}
+                <h1>Sign up for your account</h1>
+                <input
+                  type="text"
+                  id="fullname"
+                  name="fullname"
+                  placeholder="Enter full name"
+                  value={credentials.fullname}
+                  onChange={handleChange}
+                />
+                <div>
+                  <p className="upper-login-attach ">
+                    {<button className="btn-opt-login"
+                      onClick={() => setToggleShow(!toggleShow)} >
+                      <span className="badge"><FiPaperclip /></span>
+                      {toggleShow ? 'Hide details' : 'Attach'}
+                    </button>}
+                  </p>
+                  {toggleShow && <div className='attach'>
+                    <ImgUploader onUploaded={onUploaded} />
+                    <label className="label_login" htmlFor='upload-file-url'>Attach a link</label>
+                    <input
+                      className="inputAttach"
+                      type="text"
+                      id="upload-file-url"
+                      name="imgUrl"
+                      placeholder="Enter link img profile"
+                      value={credentials.imgUrl}
+                      onChange={handleChange} />
+                  </div>
+                  }
                 </div>
-                }
-              </div>
-            </>
-          ) : (
-            <h1>Login to Store</h1>
-          )}
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Enter username"
-            value={credentials.username}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter password"
-            value={credentials.password}
-            onChange={handleChange}
-          />
-          <button className={`logbtn ${isSignup ? "signup" : "login"}`}>
-            {isSignup ? "Sign up" : "Log in"}
-          </button>
-        </form>
-        <hr />
-        <div className="dif-choice flex">
-          <Link to="/">Back Home</Link>
-          {isSignup ? (
-            <Link to="/login"> Log In</Link>
-          ) : (
-            <Link to="/signup"> Sign up for an account</Link>
-          )}
+              </>
+            ) : (
+              <h1>Login to Store</h1>
+            )}
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              value={credentials.username}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              value={credentials.password}
+              onChange={handleChange}
+            />
+            <button className={`logbtn ${isSignup ? "signup" : "login"}`}>
+              {isSignup ? "Sign up" : "Log in"}
+            </button>
+          </form>
+          <hr />
+          <div className="dif-choice flex">
+            <Link to="/">Back Home</Link>
+            {isSignup ? (
+              <Link to="/login"> Log In</Link>
+            ) : (
+              <Link to="/signup"> Sign up for an account</Link>
+            )}
+          </div>
         </div>
-      </div>
 
-      <img className="left-hero" src={leftHero} />
-      <img className="right-hero" src={rightHero} />
+        <img className="left-hero" src={leftHero} />
+        <img className="right-hero" src={rightHero} />
+      </div>
     </section>
   )
 }

@@ -17,10 +17,10 @@ const STORAGE_KEY = 'toy'
 const BASE_URL = (process.env.NODE_ENV == 'production') ? '/api/toy' : '//localhost:3030/api/toy'
 
 
-async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'created', pageIdx: 0 }) {
+async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'created' }) {
     if (filterBy.labels.length === 7 || filterBy.labels.includes('all')) filterBy.labels = []
-    const url = `${BASE_URL}?name=${filterBy.name}&inStock=${filterBy.inStock}&labels=${filterBy.labels}&sortBy=${filterBy.sort}`
-    const queryRes = await axios.get(url)
+    const httpUrl = `${BASE_URL}?name=${filterBy.name}&inStock=${filterBy.inStock}&labels=${filterBy.labels}&sortBy=${filterBy.sort}`
+    const queryRes = await axios.get(httpUrl)
     const toys = queryRes.data
     return toys
 }

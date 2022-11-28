@@ -1,5 +1,8 @@
 import React from 'react';
 import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux';
+
+import { Checkout } from '../store/actions/cart.actions';
 import { showSuccessMsg } from '../services/event-bus.service';
 
 export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, onClearCart }) {
@@ -8,6 +11,12 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
     const shippingPrice = itemsPrice > 600 ? 0 : 20
     const totalPrice = itemsPrice + taxPrice + shippingPrice
 
+    const dispatch = useDispatch()
+
+    const checkout = () => {
+        dispatch(Checkout())
+        showSuccessMsg('Charged you: $' + totalPrice.toLocaleString())
+    }
 
     return (
         <aside className="block col-1">
@@ -51,7 +60,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                         <div className="row" >
                             <button onClick={() =>
                                 setTimeout(() => {
-                                    onClearCart()
+                                    checkout()
                                     onToggleCard()
                                     Swal.fire({
                                         icon: 'success',
@@ -59,7 +68,6 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                                         showConfirmButton: false,
                                         timer: 1500,
                                     })
-                                    { showSuccessMsg('Charged you: $' + totalPrice.toLocaleString()) }
                                 }, 1000)
                             }> Checkout </button>
                         </div>

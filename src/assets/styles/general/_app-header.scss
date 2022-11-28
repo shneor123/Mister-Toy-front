@@ -8,15 +8,6 @@
     font-size: calc(10px + 2vmin);
     color: white;
     position: relative;
-
-    video{
-        z-index: 2000;
-        height: 150px;
-        width: 200px;
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-      }
 }
 
 header {
@@ -81,6 +72,25 @@ header {
 
             p {
                 color: #fff;
+                margin: 10px;
+            }
+
+            .user-settings {
+                a {
+                    color: #bea4a4;
+
+                    &.active {
+                        text-decoration: underline;
+                    }
+
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+
+            hr {
+                margin-top: 10px;
             }
 
             span {

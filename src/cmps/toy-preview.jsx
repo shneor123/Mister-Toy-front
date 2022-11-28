@@ -12,7 +12,7 @@ import imgDef from '../assets/img/default.jpg'
 import imgSale from '../assets/img/sale-2.png'
 import { Draggable } from 'react-beautiful-dnd';
 
-export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveCart, index }) => {
+export const ToyPreview = ({ toy, onRemoveToy, onAddToCart, index }) => {
     const [blockPickerColor, setBlockPickerColor] = useState('#ece9e9')
     const loggedInUser = userService.getLoggedinUser()
     const { createdAt } = toy
@@ -35,15 +35,7 @@ export const ToyPreview = ({ toy, onRemoveToy, cartItems, onAddToCart, onRemoveC
                                 <img className='sale_preivew' src={toy.price < 60 ? imgSale : ""} alt="" />
                             </Link>
                             <div className="img-container"><img src={toy.src || imgDef} /></div>
-                            {cartItems <= 0 ? (
-                                <span className='sp_add_cart flip-in-hor-bottom' onClick={() => onAddToCart(toy)}> + Add To Cart</span>
-                                ) : (
-                                <span className='sp_add_cart flip-in-hor-bottom' onClick={() => onAddToCart(toy)}> + Add To Cart</span>
-                                // <div className='add_lass_inCart flip-in-hor-bottom'>
-                                //     <span className='sp_cart_pre' onClick={() => onAddToCart(toy)}> + </span>
-                                //     <span className='sp_cart_pre' onClick={() => onRemoveCart(toy)}> - </span>
-                                // </div>
-                            )}
+                            <span className='sp_add_cart flip-in-hor-bottom' onClick={() => onAddToCart(toy)}> + Add To Cart</span>
                             <section className="btns-container">
                                 {(loggedInUser?.isAdmin) && <>
                                     <PickColor blockPickerColor={blockPickerColor} setBlockPickerColor={setBlockPickerColor} />

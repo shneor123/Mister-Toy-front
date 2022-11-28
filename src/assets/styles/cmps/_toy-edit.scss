@@ -17,18 +17,10 @@
     padding: 0 20px;
     position: relative;
 
-
-    .toy_createdAt {
-        position: absolute;
-        top: 0;
-        right: 40%;
-        font-size: 10px;
-    }
-
     .basic-details-container {
         flex-basis: 50%;
         height: 100%;
-        align-self: flex-start;
+        // align-self: flex-start;
 
         label {
             display: flex;
@@ -40,6 +32,7 @@
             width: 92%;
             border-radius: 5px;
             padding-left: 5px;
+            margin-bottom: 14px;
         }
 
         h3 {
@@ -53,6 +46,8 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        margin-top: 10px;
+        gap: 30px;
 
         .labels {
             display: flex;

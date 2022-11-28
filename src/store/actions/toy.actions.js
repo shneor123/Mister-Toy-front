@@ -34,11 +34,7 @@ export function loadToys() {
         const filterBy = getState().toyModule.filterBy
         return toyService.query(filterBy)
             .then(toys => {
-                const action = {
-                    type: 'SET_TOYS',
-                    toys
-                }
-                dispatch(action)
+                dispatch({ type: 'SET_TOYS', toys })
             })
             .catch(err => {
                 console.error('Error:', err)

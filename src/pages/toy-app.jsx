@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { AiOutlineSearch } from "react-icons/ai"
 
@@ -8,7 +8,6 @@ import { Toylist } from '../cmps/toy-list'
 import { ToyFilter } from '../cmps/toy-filter'
 import { CartApp } from '../general/cart-app'
 import { Loader } from "../general/loader"
-import { AppFooter } from '../general/app-footer'
 
 import { userService } from '../services/user.service'
 import { showSuccessMsg } from '../services/event-bus.service'
@@ -19,7 +18,7 @@ import { addToCart, clearCart, removeFromCart } from '../store/actions/cart.acti
 export const ToyApp = () => {
   const { toys } = useSelector((storeState) => storeState.toyModule)
   const { user } = useSelector((storeState) => storeState.userModule)
-  const [characters, updateCharacters] = useState(toys)
+  const [characters, updateCharacters] = useState()
   const [toggleShow, setToggleShow] = useState(false)
   const [isOpenCard, setIsOpenCard] = useState(true)
   const [cartItems, setCartItems] = useState([])
@@ -45,9 +44,9 @@ export const ToyApp = () => {
     dispatch(loadToys())
   }
 
-  const handleOnDragEnd = (result) => {
+  const onDragEnd = (result) => {
     if (!result.destination) return
-    const items = Array.from(characters)
+    const items = characters
     const [reorderedItem] = items.splice(result.source.index, 1)
     items.splice(result.destination.index, 0, reorderedItem)
     updateCharacters(items)
@@ -84,7 +83,7 @@ export const ToyApp = () => {
   if (!toys) return <Loader />
   return (
     <>
-      <DragDropContext onDragEnd={handleOnDragEnd}>
+      <DragDropContext onDragEnd={onDragEnd}>
         <section className='toy-app'>
           <div>
             <p className="upper-side-menu ">
@@ -122,12 +121,6 @@ export const ToyApp = () => {
             }
           </>)}
         </section>
-        <AppFooter
-          onToggleCard={onToggleCard}
-          cartItems={cartItems}
-          isOpenCard={isOpenCard}
-          setIsOpenCard={setIsOpenCard}
-        />
       </DragDropContext>
     </>
   )

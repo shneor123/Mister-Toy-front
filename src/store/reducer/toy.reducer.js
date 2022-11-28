@@ -5,7 +5,6 @@ const initialState = {
         name: '',
         inStock: '',
         labels: '',
-        pageIdx: 0
     }
 }
 

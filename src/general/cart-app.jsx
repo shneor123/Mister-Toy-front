@@ -32,13 +32,12 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                             <button onClick={() => onRemoveCart(item)} className="remove"> - </button>{" "}
                             <button onClick={() => onAddToCart(item)} className="add"> + </button>
                         </div>
-                        <div className="col-2 text-right"> {item.qty} x ${item.price.toFixed(2)} </div>
+                        <div className="col-2 text-right"> <strong>{item.qty}</strong> x ${item.price.toFixed(2)} </div>
                     </div>
                 ))}
                 {cartItems.length !== 0 && (
                     <>
                         <hr></hr>
-                        {/* shopping in 3 bisness day<input type="checkbox" /> */}
                         <div className="row">
                             <div className="col-2">Items Price</div>
                             <div className="col-1 text-right">${itemsPrice.toFixed(2)}</div>
@@ -61,6 +60,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                             <button onClick={() =>
                                 setTimeout(() => {
                                     checkout()
+                                    onClearCart()
                                     onToggleCard()
                                     Swal.fire({
                                         icon: 'success',

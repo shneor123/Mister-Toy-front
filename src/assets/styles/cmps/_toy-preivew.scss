@@ -1,141 +1,112 @@
-.links_a {
-    color: $clr4;
-}
-
-.toy-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid $clr4;
-    margin-top: 45px;
-    height: 360px;
-    width: 350px;
-    border-radius: 25px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: relative;
-
-    &:hover {
-        box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 10%);
-    }
-
-    .sale_preivew {
-        height: 60px;
-        // border: 1px solid $clr2;
-        border: none;
-        border-radius: 5px;
-        position: absolute;
-        left: -15px;
-        top: -8px;
-    }
-
-    h1 {
-        font-size: 23px;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-        margin: 13px;
-    }
-
-    p {
-        margin: -4px;
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    .img-container {
-        width: 100%;
-        background-color: white;
-        height: 45%;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-
-        img {
-            max-width: 100%;
-            height: 100%;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
-    }
-
-    .add_lass_inCart {
+    .toy-container {
+        background-color: #ece9e9;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        flex-direction: row;
-        justify-content: center;
-        gap: 25px;
-        width: 300px;
+        justify-content: space-between;
+        border: 2px solid $clr4;
+        margin-top: 45px;
+        height: 360px;
+        width: 400px;
+        border-radius: 25px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        position: relative;
 
-        .sp_cart_pre {
+        &:hover {
+            box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 10%);
+        }
+
+        a {
+            color: $clr4;
+        }
+
+        .sale_preivew {
+            height: 60px;
+            border: none;
+            border-radius: 5px;
+            position: absolute;
+            left: -15px;
+            top: -8px;
+        }
+
+        .toy_row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+
+            h1 {
+                font-size: rem(26px);
+            }
+
+            h4 {
+                font-size: rem(17px);
+                color: rgb(114, 75, 75);
+            }
+
+            h1,
+            h4 {
+                margin: 13px;
+            }
+        }
+
+        p {
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+        }
+
+        .img-container {
+            width: 100%;
+            background-color: white;
+            height: 45%;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+
+            img {
+                max-width: 100%;
+                height: 100%;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+        }
+
+        .add_lass_inCart {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            gap: 25px;
+            width: 300px;
+
+            .sp_cart_pre {
+                color: #fff;
+                cursor: pointer;
+                background-color: #0d6efd;
+                border-color: #0d6efd;
+                border-radius: 5px;
+                padding: 6px;
+                margin-bottom: 8px;
+                width: 10%;
+
+                &:hover {
+                    background: linear-gradient(to bottom, #476e9e 5%, #0d6efd 100%);
+                }
+            }
+        }
+
+        .sp_add_cart {
             color: #fff;
             cursor: pointer;
             background-color: #0d6efd;
             border-color: #0d6efd;
             border-radius: 5px;
             padding: 6px;
-            margin-top: 8px;
-            width: 10%;
-        }
-
-    }
-
-    .sp_add_cart {
-        color: #fff;
-        cursor: pointer;
-        background-color: #0d6efd;
-        border-color: #0d6efd;
-        border-radius: 5px;
-        padding: 6px;
-        margin-top: 8px;
-        width: 80%;
-
-        &:hover {
-            background: linear-gradient(to bottom, #476e9e 5%, #0d6efd 100%);
-        }
-    }
-
-
-    .btns-container {
-        display: flex;
-        margin-left: 5px;
-        margin-top: 5px;
-        // visibility: hidden;
-
-        @include for-mobile-layout {
-            visibility: unset;
-        }
-
-        img {
-            width: 18px;
-            height: 18px;
-        }
-
-        &:hover .btns-container {
-            visibility: unset;
-        }
-
-        button,
-        a {
-            width: 28px;
-            height: 28px;
-            margin: 0 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: $clr4;
-            background-color: $clr1;
-            cursor: pointer;
+            margin-bottom: 15px;
+            width: 80%;
 
             &:hover {
-                color: $clr4;
-                background-color: $clr2;
-                border: 1px solid rgb(154, 153, 153);
+                background: linear-gradient(to bottom, #476e9e 5%, #0d6efd 100%);
             }
         }
     }
-
-}

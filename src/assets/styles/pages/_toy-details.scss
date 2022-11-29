@@ -1,7 +1,6 @@
 .details-page-container {
-  width: 95%;
+  width: 80%;
   margin: auto;
-  position: relative;
 
   .details-section {
     display: flex;
@@ -11,15 +10,13 @@
       display: flex;
       flex-direction: column;
       gap: 0px;
-      width: 75%;
+      width: 80%;
     }
 
     [name="content"] {
-      height: 90px;
-      width: 100%;
+      height: 60px;
       margin-bottom: 3px;
       margin-top: -5px;
-      border-radius: 5px;
     }
   }
 
@@ -34,52 +31,22 @@
     margin-top: 12px;
   }
 
+  .chat-container,
   .reviews-container,
   .details-container {
-    border: 1px solid rgb(64, 20, 20);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 55%;
+    width: 35%;
     height: 55vh;
     min-width: 200px;
     margin: 40px auto;
     background-color: $clr3;
     border-radius: 15px;
     padding: 5px 10px;
-    position: relative;
-
-    .img_details {
-      position: absolute;
-      left: 88%;
-      top: -8%;
-      width: 150px;
-
-      @include for-mobile-layout {
-        left: 80%;
-        top: -6%;
-        width: 80px;
-      }
-    }
-    img {
-      max-height: 150px;
-      width: 60%;
-      margin-bottom: 10px;
-      object-fit: center;
-      border-radius: 20px;
-
-      @include for-wide-layout {
-        position: absolute;
-        top: 65px;
-        left: 10px;
-        max-height: 80%;
-        width: 45%;
-        object-fit: cover;
-        border-radius: 20px;
-      }
-    }
   }
 
+  .chat-container,
   .details-container,
   .reviews-container {
     margin: 40px 10px;
@@ -87,48 +54,37 @@
 
   .details-container {
     justify-content: space-around;
-    cursor: default;
 
-    strong {
-      text-decoration: underline;
+    .btns-container {
+      display: flex;
 
-      @include for-mobile-layout {
-        display: none;
-      }
-    }
+      button,
+      a {
+        width: 38px;
+        height: 38px;
+        margin: 0 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: $clr4;
+        background-color: $clr1;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
 
-    .container {
-
-      h4,
-      h5,
-      p {
-        margin-bottom: 35px;
-        padding: 5px;
-      }
-
-      @include for-wide-layout {
-
-        h4,
-        h5,
-        p {
-          margin-inline-end: -350px;
-          margin-top: 45px;
-          padding: 5px;
-        }
-
-        span {
-          position: absolute;
-          left: 50px;
-          bottom: 25px;
-
+        &:hover {
+          color: $clr4;
+          background-color: $clr2;
         }
       }
     }
   }
 
+  .chat-container,
   .reviews-container {
     justify-content: flex-start;
 
+    .msgs-container,
     .toy-reviews {
       flex-grow: 1;
       margin-top: 5px;
@@ -139,6 +95,51 @@
       overflow-y: auto;
     }
 
+    .msgs-container {
+      background-color: white;
+      border-radius: 15px;
+      border: 1px solid $clr4;
+      margin: 5px 0;
+      padding: 0 5px;
+    }
+
+    .chat-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background-color: $clr4;
+      border-radius: 15px;
+      padding: 5px 10px;
+
+      label {
+        text-align: start;
+        color: white;
+      }
+
+      form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+
+      [name="txt"] {
+        flex-grow: 1;
+        width: 80%;
+        height: 83%;
+        border-radius: 10px;
+        padding-left: 7px;
+      }
+    }
+
+    h1 span.toy-name {
+      color: $clr2;
+    }
+
+    .chat-msg,
     .toy-review {
       height: fit-content;
       border-radius: 5px;
@@ -165,7 +166,6 @@
       &:hover .delete-btn {
         display: unset;
       }
-
     }
 
   }
@@ -174,13 +174,26 @@
     background-color: white;
   }
 
+  .chat-msg {
+    background-color: $clr3;
+    margin: 3px;
+  }
+
   h1 {
-    margin-bottom: 1px;
+    margin-bottom: 5px;
   }
 
   h2,
+  p,
   h4,
   h5 {
-    margin: 7px auto;
+   
+    margin: 2px auto;
+  }
+
+  img {
+    max-height: 220px;
+    max-width: 80%;
+    border-radius: 20px;
   }
 }

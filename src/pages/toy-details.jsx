@@ -8,6 +8,7 @@ import { utilService } from "../services/util.service"
 import { userService } from "../services/user.service"
 import { showSuccessMsg } from "../services/event-bus.service"
 
+import { loadToys, removeToy } from "../store/actions/toy.actions"
 import { ToyReview } from "../cmps/reviews/toy-review"
 import { ReviewForm } from "../cmps/reviews/review-form"
 import { addReview, loadReviews, removeReview } from '../store/actions/review.action'
@@ -16,10 +17,12 @@ import { ChatApp } from "../cmps/chat-app"
 import { Loader } from "../general/loader"
 
 import imgDef from '../assets/img/default.jpg'
-import imgSale from '../assets/img/sale-1.jpeg'
+import trash from "../assets/img/trash.png"
+import edit from "../assets/img/edit.png"
+import details from "../assets/img/details.png"
 
 
-export const ToyDetails = () => {
+export const ToyDetails = (props) => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
     const [toggleShow, setToggleShow] = useState(false)
     const [toy, setToy] = useState(null)
@@ -27,9 +30,6 @@ export const ToyDetails = () => {
     const dispatch = useDispatch()
     const { toyId } = useParams()
 
-    const onToogleShow = () => {
-        setToggleShow(!toggleShow)
-    }
     useEffect(() => {
         loadToy()
     }, [toyId])
@@ -52,41 +52,61 @@ export const ToyDetails = () => {
         showSuccessMsg('Review added')
     }
 
+    const onRemoveToy = (toyId) => {
+        dispatch(removeToy(toyId))
+        navigate('/toy')
+        dispatch(loadToys())
+    }
+    const onToogleShow = () => {
+        setToggleShow(!toggleShow)
+    }
+
     if (!toy) return <Loader />
     const stockDesc = toy.inStock ? '' : 'Not '
     const color = toy.inStock ? 'green' : 'red'
     const labels = toy.labels ? toy.labels.join(', ') + '.' : 'No labels specified'
     const loggedInUser = userService.getLoggedinUser()
+
     return (
         <section className="details-page-container">
             <Link className='back-btn' to={'/toy'}> Back </Link>
             <div className="details-section">
-                <div className="details-container">
-                    <div className="container">
-                        <h4><strong>Name: </strong>{toy.name.length > 20 ? toy.name.substring(0, 15) + '...' : toy.name}</h4>
-                        <p><strong>Price: </strong> ${toy.price}</p>
-                        <p><strong>Author: </strong>{toy.author}</p>
-                        <img className="img_details" src={toy.price < 60 ? imgSale : ""} alt="" />
-                        <h5 style={{ color }}>{stockDesc}in stock</h5>
-                        <p className="labels"><strong>Labels: </strong>{labels.length > 30 ? labels.substring(0, 25) + '...' : labels}</p>
-                        {/* <p><strong>Labels: </strong>{labels}</p> */}
-                        <img src={toy.src || imgDef}></img>
-                        <span><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</span>
-                    </div>
-                </div>
-            </div>
-            <div className="details-section">
-                <div className="reviews-container"><h1>Reviews:</h1>
+                <div className="reviews-container">
+                    <h1>Reviews:</h1>
                     <ReviewForm onAddReview={onAddReview} />
                     <ToyReview reviews={reviews} loggedInUser={loggedInUser} onRemoveReview={onRemoveReview} />
                 </div>
-            </div>
-            <div className="toogle__modal">
-                <span className={`${toggleShow ? 'toggle-icon stop' : 'toggle-icon slide-in-right'}`}
-                    onClick={onToogleShow} ><AiFillWechat className='wobble-hor-bottom' />
-                </span>
-                {toggleShow && <div className='chat-container-open'><ChatApp toy={toy} onToggleModal={onToogleShow} /></div>}
+                <div className="details-container">
+                    <p className="name_d"><strong>Name: </strong>{toy.name.length > 20 ? toy.name.substring(0, 15) + '...' : toy.name}</p>
+                    <p className="price_d"><strong>Price: </strong>US ${toy.price}</p>
+                    <p className="author_d"> <strong>Author: </strong>{toy.author}</p>
+                    <p><strong>Labels: </strong>{labels}</p>
+                    <h5 style={{ color }}>{stockDesc}in stock</h5>
+                    <img src={toy.src || imgDef}></img>
+                    <span><strong>Uploaded site: </strong>{utilService.dateToString(toy.createdAt)}</span>
+
+                    <section className="btns-container">
+                        {(loggedInUser?.isAdmin) && <>
+                            <button onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
+                            <Link to={`/toy/edit/${toy._id}`}><button><img src={edit}></img></button></Link>
+                        </>}
+                        <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
+                            <button><img src={details} /></button></Link>}</div>
+                    </section>
+                </div>
+                <div className="toogle__modal">
+                    <span className={`${toggleShow ? 'toggle-icon stop' : 'toggle-icon slide-in-right'}`}
+                        onClick={onToogleShow} ><AiFillWechat className='wobble-hor-bottom' />
+                    </span>
+                    {toggleShow && <div className='chat-container-open'><ChatApp toy={toy} onToggleModal={onToogleShow} /></div>}
+                </div>
             </div>
         </section>
     )
 }
+
+
+
+
+
+

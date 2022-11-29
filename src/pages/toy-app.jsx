@@ -34,11 +34,6 @@ export const ToyApp = () => {
     dispatch(loadToys())
   }
 
-  const onRemoveToy = (toyId) => {
-    dispatch(loadToys())
-    dispatch(removeToy(toyId))
-  }
-
   const onChangeFilter = (filterBy) => {
     dispatch(setFilter(filterBy))
     dispatch(loadToys())
@@ -96,10 +91,10 @@ export const ToyApp = () => {
           {toys && <Toylist
             // toys={characters}
             toys={toys}
-            onRemoveToy={onRemoveToy}
             cartItems={cartItems}
             onAddToCart={onAddToCart}
             onRemoveCart={onRemoveCart}
+            onToggleCard={onToggleCard}
           />
           }
           {cartItems.length !== 0 && (<>

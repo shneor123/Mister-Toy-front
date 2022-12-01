@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { LogOut } from '../login/logout'
@@ -44,9 +44,7 @@ export const AppHeader = () => {
                                 <Link to="/users">Users</Link>
                             </i>}
                         <hr />
-                        <div onClick={onUserLogout}>
-                            <LogOut user={user} />
-                        </div>
+                        <div onClick={onUserLogout}> <LogOut /> </div>
                     </div>}
                 </div>
                 <nav className='nav-links '>

@@ -90,8 +90,6 @@ export const ToyDetails = (props) => {
                             <button onClick={() => onRemoveToy(toy._id)}><img src={trash} /></button>
                             <Link to={`/toy/edit/${toy._id}`}><button><img src={edit}></img></button></Link>
                         </>}
-                        <div>{(!loggedInUser?.isAdmin) && <Link to={`/toy/details/${toy._id}`}>
-                            <button><img src={details} /></button></Link>}</div>
                     </section>
                 </div>
                 <div className="toogle__modal">

@@ -32,7 +32,7 @@ export function CartApp({ cartItems, onAddToCart, onRemoveCart, onToggleCard, on
                             <button onClick={() => onRemoveCart(item)} className="remove"> - </button>{" "}
                             <button onClick={() => onAddToCart(item)} className="add"> + </button>
                         </div>
-                        <div className="col-2 text-right"> <strong>{item.qty}</strong> x ${item.price.toFixed(2)} </div>
+                        <div className="col-2 text-right"> <strong>{item.qty}</strong> x <strong>${item.price.toFixed(2)}</strong></div>
                     </div>
                 ))}
                 {cartItems.length !== 0 && (

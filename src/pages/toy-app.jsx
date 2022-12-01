@@ -12,8 +12,10 @@ import { Loader } from "../general/loader"
 import { userService } from '../services/user.service'
 import { showSuccessMsg } from '../services/event-bus.service'
 
-import { loadToys, removeToy, setFilter } from '../store/actions/toy.actions'
+import { loadToys, setFilter } from '../store/actions/toy.actions'
 import { addToCart, clearCart, removeFromCart } from '../store/actions/cart.actions'
+
+
 
 export const ToyApp = () => {
   const { toys } = useSelector((storeState) => storeState.toyModule)

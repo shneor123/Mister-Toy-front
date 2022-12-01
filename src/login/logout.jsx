@@ -6,8 +6,8 @@ import FormGroup from '@mui/material/FormGroup';
 export const LogOut = () => {
     const [auth, setAuth] = useState(true)
 
-    const handleChange = (event) => {
-        setAuth(event.target.checked)
+    const handleChange = (ev) => {
+        setAuth(ev.target.checked)
     }
 
     return (

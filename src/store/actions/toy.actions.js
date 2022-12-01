@@ -1,8 +1,8 @@
 import { toyService } from "../../services/toy.service";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { socketService } from "../../services/socket.service";
-import { userService } from "../../services/user.service";
 
+//Action
 export function getActionRemoveToy(toyId) {
     return {
         type: 'REMOVE_TOY',
@@ -19,12 +19,6 @@ export function getActionUpdateToy(toy) {
     return {
         type: 'UPDATE_TOYS',
         toy
-    }
-}
-export function getActionSetToy(toy) {
-    return {
-        type: 'SET_TOY',
-        board: toy
     }
 }
 

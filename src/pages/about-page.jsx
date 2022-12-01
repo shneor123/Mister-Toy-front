@@ -5,7 +5,6 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 const AnyReactComponent = ({ text }) => <div>{text}</div>
 
 export const AboutPage = () => {
-
     const [map, setMap] = useState({
         center: {
             lat: 32.109333,
@@ -67,13 +66,18 @@ export const AboutPage = () => {
 
             <div className='map' style={{ borderRadius: '4px', }}>
                 <GoogleMapReact
-                    // style={{borderRadius: '5px'}}
                     bootstrapURLKeys={{ key: 'AIzaSyA7svj7Pw0bEG5od8w7lW9Mu8zKhfCMDrA' }}
                     defaultCenter={center}
                     center={center}
                     defaultZoom={zoom}
                 >
-                    {branches.map(branch => <AnyReactComponent key={branch.name} title={branch.name} lat={branch.lat} lng={branch.lng} text={<FaMapMarkerAlt style={{ fontSize: '35px', color: '#913333' }} />} />)}
+                    {branches.map(branch =>
+                        <AnyReactComponent
+                            key={branch.name}
+                            title={branch.name}
+                            lat={branch.lat}
+                            lng={branch.lng}
+                            text={<FaMapMarkerAlt style={{ fontSize: '35px', color: '#913333' }} />} />)}
                 </GoogleMapReact>
             </div>
         </main>

@@ -7,7 +7,6 @@ import imgDef from '../assets/img/default.jpg'
 import imgSale from '../assets/img/sale-2.png'
 
 export const ToyPreview = ({ toy, index, cartItems, onAddToCart, onRemoveCart, onToggleCard }) => {
-    const { createdAt } = toy
     return (
         <div>
             <Draggable draggableId={toy._id} index={index}>
@@ -23,7 +22,7 @@ export const ToyPreview = ({ toy, index, cartItems, onAddToCart, onRemoveCart, o
                                     <h1>{toy.name.length > 20 ? toy.name.substring(0, 20) + '...' : toy.name}</h1>
                                     <h4>${toy.price}</h4>
                                 </div>
-                                <p><strong>created: </strong>{utilService.dateToString(createdAt)}</p>
+                                <p><strong>created: </strong>{utilService.dateToString(toy.createdAt)}</p>
                                 <img className='sale_preivew' src={toy.price < 60 ? imgSale : ""} alt="" />
                             </NavLink>
                             <div className="img-container"><img src={toy.src || imgDef} /></div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { HashRouter as Router, Route, Routes } from "react-router-dom"
 
 import { ToyApp } from "./pages/toy-app";
@@ -15,6 +16,8 @@ import { UsersInfo } from "./pages/info/user-info";
 
 
 function App() {
+  const { toys } = useSelector((storeState) => storeState.toyModule)
+
   return (
     <Router>
       <AppHeader />
@@ -30,7 +33,7 @@ function App() {
         <Route element={<LoginSignup />} path={"/signup"} />
         <Route element={<UsersInfo />} path={"/users"} />
         <Route element={<ReviewsInfo />} path={"/reviews"} />
-        <Route element={<Dashboard />} path={"/toy/statistics"} />
+        <Route element={<Dashboard toys={toys} />} path={"/toy/statistics"} />
       </Routes>
     </Router>
   )

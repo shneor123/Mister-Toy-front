@@ -32,7 +32,6 @@ export const ChatApp = (props) => {
             socketService.off(SOCKET_EMIT_SEND_MSG, addMsg)
             clearTimeout(timeout)
         }
-
     }, [isBotMode])
 
 

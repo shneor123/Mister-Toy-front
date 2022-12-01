@@ -15,8 +15,6 @@ import { showSuccessMsg } from '../services/event-bus.service'
 import { loadToys, setFilter } from '../store/actions/toy.actions'
 import { addToCart, clearCart, removeFromCart } from '../store/actions/cart.actions'
 
-
-
 export const ToyApp = () => {
   const { toys } = useSelector((storeState) => storeState.toyModule)
   const { user } = useSelector((storeState) => storeState.userModule)

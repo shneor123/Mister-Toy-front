@@ -10,11 +10,12 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
+    getRandomRobotImg
 }
 window.cs = toyService;
 const TOY_BASE_ENDPOINT = 'toy'
-const STORAGE_KEY = 'toy'
-const BASE_URL = (process.env.NODE_ENV == 'production') ? '/api/toy' : '//localhost:3030/api/toy'
+const BASE_URL = (process.env.NODE_ENV == 'production')
+    ? '/api/toy' : '//localhost:3030/api/toy'
 
 
 async function query(filterBy = { name: '', inStock: 'all', labels: [], sort: 'created' }) {
@@ -58,6 +59,11 @@ function getEmptyToy() {
         createdAt: Date.now(),
         inStock: '',
     }
+}
+
+function getRandomRobotImg() {
+	const id = utilService.makeId(16)
+	return `https://robohash.org/${id}?set=set3`
 }
 
 // TEST DATA

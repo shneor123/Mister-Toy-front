@@ -3,6 +3,7 @@
 @import "setup/functions";
 @import "setup/mixins";
 @import "setup/animista";
+@import "setup/typography";
 
 // Basics
 @import "basics/helpers";
@@ -39,3 +40,11 @@
 @import "general/user-msg";
 @import "general/img-uploader";
 @import "cmps/main-manu";
+
+
+.App {
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 25%;
+  }
+  

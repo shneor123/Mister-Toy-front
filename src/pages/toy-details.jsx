@@ -19,10 +19,8 @@ import { Loader } from "../general/loader"
 import imgDef from '../assets/img/default.jpg'
 import trash from "../assets/img/trash.png"
 import edit from "../assets/img/edit.png"
-import details from "../assets/img/details.png"
 
-
-export const ToyDetails = (props) => {
+export const ToyDetails = () => {
     const { reviews } = useSelector((storeState) => storeState.reviewModule)
     const [toggleShow, setToggleShow] = useState(false)
     const [toy, setToy] = useState(null)

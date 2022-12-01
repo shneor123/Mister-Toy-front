@@ -1,6 +1,5 @@
 const initialState = {
     toys: [],
-    cart:[],
     filterBy: {
         name: '',
         inStock: '',
@@ -11,8 +10,6 @@ const initialState = {
 export function toyReducer(state = initialState, action) {
     var newState = state
     var toys
-    var cart
-
     switch (action.type) {
         case 'SET_TOYS':
             newState = { ...state, toys: action.toys }
